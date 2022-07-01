@@ -17,9 +17,6 @@ namespace FormatXamlExtension
 
         public const string guidFormatXamlExtensionPackageCmdSetString = "82106dbb-f49e-419b-aeb0-642f3fe41015";
         public static Guid guidFormatXamlExtensionPackageCmdSet = new Guid(guidFormatXamlExtensionPackageCmdSetString);
-
-        public const string guidImagesString = "4d694bab-2df8-4187-8a71-5cf1f010451b";
-        public static Guid guidImages = new Guid(guidImagesString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -28,11 +25,5 @@ namespace FormatXamlExtension
     {
         public const int MyMenuGroup = 0x1020;
         public const int FormatCommandId = 0x0100;
-        public const int bmpPic1 = 0x0001;
-        public const int bmpPic2 = 0x0002;
-        public const int bmpPicSearch = 0x0003;
-        public const int bmpPicX = 0x0004;
-        public const int bmpPicArrows = 0x0005;
-        public const int bmpPicStrikethrough = 0x0006;
     }
 }
