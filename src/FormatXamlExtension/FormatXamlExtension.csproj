@@ -45,6 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes\TextViewHelper.cs" />
     <Compile Include="FormatCommand.cs" />
     <Compile Include="FormatXamlExtensionPackage1.cs">
       <AutoGen>True</AutoGen>

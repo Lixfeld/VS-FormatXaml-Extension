@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using EnvDTE;
+using EnvDTE80;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
@@ -26,6 +28,11 @@ namespace FormatXamlExtension
         /// VS Package that provides this command, not null.
         /// </summary>
         private readonly AsyncPackage package;
+
+        /// <summary>
+        /// The top-level object in the Visual Studio automation object model
+        /// </summary>
+        private static DTE2 dte;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FormatCommand"/> class.
@@ -75,6 +82,10 @@ namespace FormatXamlExtension
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
             Instance = new FormatCommand(package, commandService);
+
+            // Get DTE object
+            if (await package.GetServiceAsync(typeof(DTE)) is DTE2 dte2)
+                dte = dte2;
         }
 
         /// <summary>
