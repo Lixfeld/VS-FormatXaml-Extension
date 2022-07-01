@@ -50,6 +50,6 @@ namespace FormatXamlExtension
             await FormatCommand.InitializeAsync(this);
         }
 
-        #endregion
+        #endregion Package Members
     }
 }
