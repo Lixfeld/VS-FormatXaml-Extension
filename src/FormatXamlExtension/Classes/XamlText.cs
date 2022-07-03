@@ -26,5 +26,12 @@ namespace FormatXamlExtension.Classes
                 LineEnding = Constants.WindowsLineEnding;
             }
         }
+
+        public XamlLine[] GetXamlLines()
+        {
+            // Split with multiple seperators because the file could have inconsistent line endings
+            string[] lines = Text.Split(new[] { Constants.WindowsLineEnding, Constants.UnixLineEnding }, StringSplitOptions.None);
+            return lines.Select(x => new XamlLine(x)).ToArray();
+        }
     }
 }
