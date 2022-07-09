@@ -5,6 +5,8 @@
         public const string UnixLineEnding = "\n";
         public const string WindowsLineEnding = "\r\n";
 
+        public const int DefaultIndentSize = 4;
+
         // EndTag: </...>
         public const string OpenEndTag = "</";
 
