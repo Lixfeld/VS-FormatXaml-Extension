@@ -55,7 +55,7 @@
 			<Button guid="guidFormatXamlExtensionPackageCmdSet" id="FormatCommandId" priority="0x0100" type="Button">
 				<Parent guid="guidFormatXamlExtensionPackageCmdSet" id="MyMenuGroup" />
 				<Strings>
-					<ButtonText>Invoke FormatCommand</ButtonText>
+					<ButtonText>Format XAML</ButtonText>
 				</Strings>
 			</Button>
 		</Buttons>

@@ -1,10 +1,10 @@
 ﻿using EnvDTE;
 using EnvDTE80;
+using FormatXamlExtension.Classes;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Text.Editor;
 using System;
 using System.ComponentModel.Design;
-using System.Globalization;
 using Task = System.Threading.Tasks.Task;
 
 namespace FormatXamlExtension
@@ -98,17 +98,30 @@ namespace FormatXamlExtension
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "FormatCommand";
 
-            // Show a message box to prove we were here
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                message,
-                title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            IWpfTextView textView = TextViewHelper.GetActiveTextView();
+            string text = TextViewHelper.GetText(textView);
+            XamlText xamlText = new XamlText(text);
+
+            // Load settings
+            int indentSize = dte.ActiveDocument.IndentSize;
+
+            XamlFormatter xamlFormatter = new XamlFormatter(indentSize);
+            string newText = xamlFormatter.Format(xamlText);
+
+            try
+            {
+                dte.UndoContext.Open("Format xaml");
+                TextViewHelper.ReplaceText(textView, newText);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex);
+            }
+            finally
+            {
+                dte.UndoContext.Close();
+            }
         }
     }
 }
