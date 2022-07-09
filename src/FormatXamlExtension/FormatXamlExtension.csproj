@@ -48,6 +48,7 @@
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\XamlLine.cs" />
     <Compile Include="Classes\TextViewHelper.cs" />
+    <Compile Include="Classes\XamlFormatter.cs" />
     <Compile Include="Classes\XamlText.cs" />
     <Compile Include="FormatCommand.cs" />
     <Compile Include="FormatXamlExtensionPackage1.cs">
