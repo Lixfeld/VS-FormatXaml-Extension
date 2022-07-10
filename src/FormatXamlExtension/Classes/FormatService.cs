@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
@@ -8,10 +9,12 @@ namespace FormatXamlExtension.Classes
     internal class FormatService
     {
         private readonly DTE dte;
+        private readonly VSOptions vsOptions;
 
-        public FormatService(DTE dte)
+        public FormatService(DTE dte, VSOptions vsOptions)
         {
             this.dte = dte;
+            this.vsOptions = vsOptions;
         }
 
         public void FormatActiveDocument()
@@ -50,8 +53,18 @@ namespace FormatXamlExtension.Classes
             ThreadHelper.ThrowIfNotOnUIThread();
 
             string name = dte.ActiveDocument.Name;
-            bool shouldFormat = name.EndsWith(".XAML", StringComparison.InvariantCultureIgnoreCase);
-            return shouldFormat;
+            if (!string.IsNullOrWhiteSpace(vsOptions.FileExtensions))
+            {
+                char[] seperators = new char[] { ' ', ';' };
+                string[] fileExtensions = vsOptions.FileExtensions.Split(seperators, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string extension in fileExtensions)
+                {
+                    if (name.EndsWith(extension, StringComparison.InvariantCultureIgnoreCase))
+                        return true;
+                }
+            }
+
+            return false;
         }
     }
 }

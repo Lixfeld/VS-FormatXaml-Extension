@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using EnvDTE80;
 using FormatXamlExtension.Classes;
+using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Design;
@@ -98,8 +99,12 @@ namespace FormatXamlExtension
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            FormatService formatService = new FormatService(dte);
-            formatService.FormatActiveDocument();
+            if (package is FormatXamlExtensionPackage formatXamlExtensionPackage)
+            {
+                VSOptions vsOptions = formatXamlExtensionPackage.VSOptions;
+                FormatService formatService = new FormatService(dte, vsOptions);
+                formatService.FormatActiveDocument();
+            }
         }
     }
 }
