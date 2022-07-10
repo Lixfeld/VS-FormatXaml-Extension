@@ -7,6 +7,10 @@
 
         public const int DefaultIndentSize = 4;
 
+        // Processing Instruction (PI) Tag: <?...?>
+        public const string OpenPITag = "<?";
+        public const string ClosePITag = "?>";
+
         // EndTag: </...>
         public const string OpenEndTag = "</";
 

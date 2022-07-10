@@ -59,6 +59,8 @@ namespace FormatXamlExtension.Classes
         /// </summary>
         private static readonly string[] xamlSymbols = new string[]
         {
+            OpenPITag,
+            ClosePITag,
             OpenEndTag,
             CloseEmptyTag,
             OpenTag,
