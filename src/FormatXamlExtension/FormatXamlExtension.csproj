@@ -50,9 +50,13 @@
     <Compile Include="EventHandler\BeforeSaveEventHandler.cs" />
     <Compile Include="EventHandler\RunningDocTableEventsHandler.cs" />
     <Compile Include="Classes\XamlLine.cs" />
+    <Compile Include="Configuration\OptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\TextViewHelper.cs" />
     <Compile Include="Classes\XamlFormatter.cs" />
     <Compile Include="Classes\XamlText.cs" />
+    <Compile Include="Configuration\VSOptions.cs" />
     <Compile Include="FormatCommand.cs" />
     <Compile Include="FormatXamlExtensionPackage1.cs">
       <AutoGen>True</AutoGen>

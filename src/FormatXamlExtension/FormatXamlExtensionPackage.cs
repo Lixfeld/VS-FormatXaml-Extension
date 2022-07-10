@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using FormatXamlExtension.Configuration;
 using FormatXamlExtension.EventHandler;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -33,6 +34,7 @@ namespace FormatXamlExtension
     [ProvideAutoLoad(UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideOptionPage(typeof(OptionPage), OptionPage.Category, OptionPage.SubCategory, 0, 0, true)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class FormatXamlExtensionPackage : AsyncPackage
     {
@@ -42,6 +44,15 @@ namespace FormatXamlExtension
         /// FormatXamlExtensionPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "555c1293-1bf9-41a5-b493-a3becfb92513";
+
+        public VSOptions VSOptions
+        {
+            get
+            {
+                OptionPage optionPage = GetDialogPage(typeof(OptionPage)) as OptionPage;
+                return optionPage.GetVSOptions();
+            }
+        }
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
