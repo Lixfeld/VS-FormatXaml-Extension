@@ -71,7 +71,7 @@ namespace FormatXamlExtension
             // Add OnBeforeSave EventHandler
             DTE dte = await GetServiceAsync(typeof(DTE)) as DTE;
             RunningDocumentTable runningDocumentTable = new RunningDocumentTable(this);
-            beforeSaveEventHandler = new BeforeSaveEventHandler(dte);
+            beforeSaveEventHandler = new BeforeSaveEventHandler(dte, this);
             runningDocumentTable.Advise(beforeSaveEventHandler);
         }
     }
