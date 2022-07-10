@@ -12,5 +12,8 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void AttributesStartsOnSecondLine() => FileComparer.Verify();
+
+        [Fact]
+        public void XmlVersion() => FileComparer.Verify();
     }
 }

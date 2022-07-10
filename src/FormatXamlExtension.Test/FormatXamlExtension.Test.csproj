@@ -13,6 +13,8 @@
     <None Remove="TestFiles\NewLineAtEnd.test" />
     <None Remove="TestFiles\NoNewLineAtEnd.expected" />
     <None Remove="TestFiles\NoNewLineAtEnd.test" />
+    <None Remove="TestFiles\XmlVersion.expected" />
+    <None Remove="TestFiles\XmlVersion.test" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\NewLineAtEnd.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\XmlVersion.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\XmlVersion.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
