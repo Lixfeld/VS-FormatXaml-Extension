@@ -1,7 +1,11 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using EnvDTE;
+using FormatXamlExtension.EventHandler;
+using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using static Microsoft.VisualStudio.VSConstants;
 using Task = System.Threading.Tasks.Task;
 
 namespace FormatXamlExtension
@@ -28,6 +32,8 @@ namespace FormatXamlExtension
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class FormatXamlExtensionPackage : AsyncPackage
     {
+        private IVsRunningDocTableEvents3 beforeSaveEventHandler;
+
         /// <summary>
         /// FormatXamlExtensionPackage GUID string.
         /// </summary>
@@ -48,6 +54,12 @@ namespace FormatXamlExtension
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await FormatCommand.InitializeAsync(this);
+
+            // Add OnBeforeSave EventHandler
+            DTE dte = await GetServiceAsync(typeof(DTE)) as DTE;
+            RunningDocumentTable runningDocumentTable = new RunningDocumentTable(this);
+            beforeSaveEventHandler = new BeforeSaveEventHandler(dte);
+            runningDocumentTable.Advise(beforeSaveEventHandler);
         }
 
         #endregion Package Members

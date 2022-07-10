@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\FormatService.cs" />
+    <Compile Include="EventHandler\BeforeSaveEventHandler.cs" />
+    <Compile Include="EventHandler\RunningDocTableEventsHandler.cs" />
     <Compile Include="Classes\XamlLine.cs" />
     <Compile Include="Classes\TextViewHelper.cs" />
     <Compile Include="Classes\XamlFormatter.cs" />
