@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\Constants.cs" />
+    <Compile Include="Classes\FormatService.cs" />
     <Compile Include="Classes\XamlLine.cs" />
     <Compile Include="Classes\TextViewHelper.cs" />
     <Compile Include="Classes\XamlFormatter.cs" />

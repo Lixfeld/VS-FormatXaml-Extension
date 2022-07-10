@@ -2,7 +2,6 @@
 using EnvDTE80;
 using FormatXamlExtension.Classes;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Text.Editor;
 using System;
 using System.ComponentModel.Design;
 using Task = System.Threading.Tasks.Task;
@@ -99,29 +98,8 @@ namespace FormatXamlExtension
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            IWpfTextView textView = TextViewHelper.GetActiveTextView();
-            string text = TextViewHelper.GetText(textView);
-            XamlText xamlText = new XamlText(text);
-
-            // Load settings
-            int indentSize = dte.ActiveDocument.IndentSize;
-
-            XamlFormatter xamlFormatter = new XamlFormatter(indentSize);
-            string newText = xamlFormatter.Format(xamlText);
-
-            try
-            {
-                dte.UndoContext.Open("Format xaml");
-                TextViewHelper.ReplaceText(textView, newText);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex);
-            }
-            finally
-            {
-                dte.UndoContext.Close();
-            }
+            FormatService formatService = new FormatService(dte);
+            formatService.FormatActiveDocument();
         }
     }
 }
