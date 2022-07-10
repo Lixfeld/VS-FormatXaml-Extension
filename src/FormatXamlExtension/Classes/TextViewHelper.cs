@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft;
+﻿using Microsoft;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
@@ -12,7 +9,7 @@ using Microsoft.VisualStudio.TextManager.Interop;
 
 namespace FormatXamlExtension.Classes
 {
-    public static class TextViewHelper
+    internal static class TextViewHelper
     {
         public static IWpfTextView GetActiveTextView()
         {

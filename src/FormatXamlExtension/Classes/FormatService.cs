@@ -5,7 +5,7 @@ using System;
 
 namespace FormatXamlExtension.Classes
 {
-    public class FormatService
+    internal class FormatService
     {
         private readonly DTE dte;
 

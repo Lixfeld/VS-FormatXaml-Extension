@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.Shell;
-using EnvDTE;
+﻿using EnvDTE;
 using FormatXamlExtension.EventHandler;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Runtime.InteropServices;
@@ -28,7 +28,7 @@ namespace FormatXamlExtension
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(FormatXamlExtensionPackage.PackageGuidString)]
+    [Guid(PackageGuidString)]
     [ProvideAutoLoad(UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
@@ -42,8 +42,6 @@ namespace FormatXamlExtension
         /// FormatXamlExtensionPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "555c1293-1bf9-41a5-b493-a3becfb92513";
-
-        #region Package Members
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
@@ -65,7 +63,5 @@ namespace FormatXamlExtension
             beforeSaveEventHandler = new BeforeSaveEventHandler(dte);
             runningDocumentTable.Advise(beforeSaveEventHandler);
         }
-
-        #endregion Package Members
     }
 }
