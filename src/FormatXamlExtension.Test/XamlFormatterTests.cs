@@ -15,5 +15,8 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void XmlVersion() => FileComparer.Verify();
+
+        [Fact]
+        public void NestedElements() => FileComparer.Verify();
     }
 }
