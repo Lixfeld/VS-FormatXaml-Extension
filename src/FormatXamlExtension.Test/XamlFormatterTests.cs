@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using FormatXamlExtension.Classes;
+using FormatXamlExtension.Configuration;
+using Xunit;
 
 namespace FormatXamlExtension.Test
 {
@@ -18,5 +20,12 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void NestedElements() => FileComparer.Verify();
+
+        [Fact]
+        public void LineEndingLF()
+        {
+            VSOptions vsOptions = new VSOptions(LineEnding.LF);
+            FileComparer.Verify(vsOptions);
+        }
     }
 }

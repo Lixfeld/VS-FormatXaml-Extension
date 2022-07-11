@@ -9,6 +9,8 @@
   <ItemGroup>
     <None Remove="TestFiles\AttributesStartsOnSecondLine.expected" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.test" />
+    <None Remove="TestFiles\LineEndingLF.expected" />
+    <None Remove="TestFiles\LineEndingLF.test" />
     <None Remove="TestFiles\NestedElements.expected" />
     <None Remove="TestFiles\NestedElements.test" />
     <None Remove="TestFiles\NewLineAtEnd.expected" />
@@ -42,6 +44,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\NestedElements.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\LineEndingLF.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\LineEndingLF.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\XmlVersion.expected">
