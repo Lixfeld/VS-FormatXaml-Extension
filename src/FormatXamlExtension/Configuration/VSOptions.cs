@@ -1,4 +1,6 @@
-﻿namespace FormatXamlExtension.Configuration
+﻿using FormatXamlExtension.Classes;
+
+namespace FormatXamlExtension.Configuration
 {
     public class VSOptions
     {
@@ -6,10 +8,24 @@
 
         public string FileExtensions { get; }
 
-        public VSOptions(bool executeOnSave, string fileExtensions)
+        public LineEnding LineEnding { get; }
+
+        /// <summary>
+        /// All options from DialogPage
+        /// </summary>
+        public VSOptions(bool executeOnSave, string fileExtensions, LineEnding lineEnding)
         {
             ExecuteOnSave = executeOnSave;
             FileExtensions = fileExtensions;
+            LineEnding = lineEnding;
+        }
+
+        /// <summary>
+        /// Only for Tests
+        /// </summary>
+        public VSOptions(LineEnding lineEnding)
+        {
+            LineEnding = lineEnding;
         }
     }
 }

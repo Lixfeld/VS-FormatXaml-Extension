@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using FormatXamlExtension.Classes;
+using Microsoft.VisualStudio.Shell;
 using System.ComponentModel;
 
 namespace FormatXamlExtension.Configuration
@@ -18,9 +19,14 @@ namespace FormatXamlExtension.Configuration
         [Description("Space separated list of all used file extensions.\r\nDefault: .xaml .axaml")]
         public string FileExtensions { get; set; } = ".xaml .axaml";
 
+        [Category(Category)]
+        [DisplayName("Line Ending")]
+        [Description("End of Line characters.\r\nDefault: Auto")]
+        public LineEnding LineEnding { get; set; } = LineEnding.Auto;
+
         public VSOptions GetVSOptions()
         {
-            return new VSOptions(ExecuteOnSave, FileExtensions);
+            return new VSOptions(ExecuteOnSave, FileExtensions, LineEnding);
         }
     }
 }

@@ -1,5 +1,12 @@
 ﻿namespace FormatXamlExtension.Classes
 {
+    public enum LineEnding
+    {
+        Auto,
+        CRLF,
+        LF
+    }
+
     public class Constants
     {
         public const string UnixLineEnding = "\n";
