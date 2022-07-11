@@ -27,5 +27,11 @@ namespace FormatXamlExtension.Test
             VSOptions vsOptions = new VSOptions(LineEnding.LF);
             FileComparer.Verify(vsOptions);
         }
+
+        [Fact]
+        public void SingleLineComments() => FileComparer.Verify();
+
+        [Fact]
+        public void CommentOnSameLine() => FileComparer.Verify();
     }
 }

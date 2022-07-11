@@ -9,6 +9,8 @@
   <ItemGroup>
     <None Remove="TestFiles\AttributesStartsOnSecondLine.expected" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.test" />
+    <None Remove="TestFiles\CommentOnSameLine.expected" />
+    <None Remove="TestFiles\CommentOnSameLine.test" />
     <None Remove="TestFiles\LineEndingLF.expected" />
     <None Remove="TestFiles\LineEndingLF.test" />
     <None Remove="TestFiles\NestedElements.expected" />
@@ -17,11 +19,25 @@
     <None Remove="TestFiles\NewLineAtEnd.test" />
     <None Remove="TestFiles\NoNewLineAtEnd.expected" />
     <None Remove="TestFiles\NoNewLineAtEnd.test" />
+    <None Remove="TestFiles\SingleLineComments.expected" />
+    <None Remove="TestFiles\SingleLineComments.test" />
     <None Remove="TestFiles\XmlVersion.expected" />
     <None Remove="TestFiles\XmlVersion.test" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="TestFiles\CommentOnSameLine.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\CommentOnSameLine.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SingleLineComments.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SingleLineComments.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestFiles\NoNewLineAtEnd.expected">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
