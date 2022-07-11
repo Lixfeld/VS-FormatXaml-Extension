@@ -35,21 +35,37 @@ namespace FormatXamlExtension.Classes
             }
             else
             {
+                List<(int index, string symbol)> symbols = new List<(int index, string symbol)>();
+
+                // Use xamlSymbols order to avoid substrings
                 foreach (string xamlSymbol in xamlSymbols)
                 {
                     int symbolIndex = Line.IndexOf(xamlSymbol, startIndex);
                     if (symbolIndex >= 0)
                     {
-                        index = symbolIndex;
-                        symbol = xamlSymbol;
-
-                        // Set startIndex for next symbol
-                        startIndex = symbolIndex + symbol.Length;
-                        return true;
+                        symbols.Add((symbolIndex, xamlSymbol));
                     }
                 }
-                startIndex = -1;
-                return false;
+
+                if (symbols.Count == 0)
+                {
+                    // No symbols found
+                    startIndex = -1;
+                    return false;
+                }
+                else
+                {
+                    // Get next symbol with lowest index
+                    int minIndex = symbols.Min(x => x.index);
+                    var minSymbol = symbols.Where(x => x.index == minIndex).First();
+
+                    index = minSymbol.index;
+                    symbol = minSymbol.symbol;
+
+                    // Set startIndex for next symbol
+                    startIndex = index + symbol.Length;
+                    return true;
+                }
             }
         }
 
