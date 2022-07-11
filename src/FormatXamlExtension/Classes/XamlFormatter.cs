@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormatXamlExtension.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,15 +8,17 @@ namespace FormatXamlExtension.Classes
     public class XamlFormatter
     {
         private readonly int indentSize;
+        private readonly VSOptions vsOptions;
 
         private int depth;
         private int attributeIndentation;
 
         private string lastSymbolInText;
 
-        public XamlFormatter(int indentSize)
+        public XamlFormatter(int indentSize, VSOptions vsOptions)
         {
             this.indentSize = indentSize;
+            this.vsOptions = vsOptions;
         }
 
         private void ResetFields()
@@ -71,7 +74,8 @@ namespace FormatXamlExtension.Classes
                 depth = lineDepth;
             }
 
-            string formattedText = string.Join(xamlText.LineEnding, formattedLines);
+            string lineEnding = GetLineEnding(xamlText.LineEnding);
+            string formattedText = string.Join(lineEnding, formattedLines);
             return formattedText;
         }
 
@@ -125,6 +129,22 @@ namespace FormatXamlExtension.Classes
         {
             string indendation = new string(' ', indentationSize);
             return indendation + text;
+        }
+
+        private string GetLineEnding(string xamlLineEnding)
+        {
+            switch (vsOptions.LineEnding)
+            {
+                case LineEnding.CRLF:
+                    return Constants.WindowsLineEnding;
+
+                case LineEnding.LF:
+                    return Constants.UnixLineEnding;
+
+                case LineEnding.Auto:
+                default:
+                    return xamlLineEnding;
+            }
         }
     }
 }

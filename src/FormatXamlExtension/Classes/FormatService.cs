@@ -30,7 +30,7 @@ namespace FormatXamlExtension.Classes
             // Load settings
             int indentSize = dte.ActiveDocument.IndentSize;
 
-            XamlFormatter xamlFormatter = new XamlFormatter(indentSize);
+            XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
             string newText = xamlFormatter.Format(xamlText);
 
             try

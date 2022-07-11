@@ -1,4 +1,5 @@
 ﻿using FormatXamlExtension.Classes;
+using FormatXamlExtension.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Xunit;
@@ -10,8 +11,11 @@ namespace FormatXamlExtension.Test
     {
         private const string TestFilesDirectory = "TestFiles\\";
 
-        public static void Verify(int indentSize = DefaultIndentSize, [CallerMemberName] string fileName = "")
+        public static void Verify(VSOptions vsOptions = null, int indentSize = DefaultIndentSize, [CallerMemberName] string fileName = "")
         {
+            if (vsOptions == null)
+                vsOptions = new VSOptions(LineEnding.Auto);
+
             string testFileName = TestFilesDirectory + fileName + ".test";
             string expectedFileName = TestFilesDirectory + fileName + ".expected";
 
@@ -19,7 +23,7 @@ namespace FormatXamlExtension.Test
             string expectedText = File.ReadAllText(expectedFileName);
 
             XamlText xamlText = new XamlText(testText);
-            XamlFormatter xamlFormatter = new XamlFormatter(DefaultIndentSize);
+            XamlFormatter xamlFormatter = new XamlFormatter(DefaultIndentSize, vsOptions);
             string actualText = xamlFormatter.Format(xamlText);
 
 #if DEBUG
