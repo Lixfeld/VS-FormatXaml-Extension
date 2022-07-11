@@ -18,6 +18,10 @@
         public const string OpenPITag = "<?";
         public const string ClosePITag = "?>";
 
+        // CommentTag: <!--...-->
+        public const string OpenCommentTag = "<!--";
+        public const string CloseCommentTag = "-->";
+
         // EndTag: </...>
         public const string OpenEndTag = "</";
 

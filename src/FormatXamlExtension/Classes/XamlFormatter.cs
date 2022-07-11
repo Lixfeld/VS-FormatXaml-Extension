@@ -13,6 +13,7 @@ namespace FormatXamlExtension.Classes
         private int depth;
         private int attributeIndentation;
 
+        private bool isComment;
         private string lastSymbolInText;
 
         public XamlFormatter(int indentSize, VSOptions vsOptions)
@@ -42,10 +43,26 @@ namespace FormatXamlExtension.Classes
                 // Analyse current line
                 while (xamlLine.TryGetNextSymbol(out string symbol, out int _))
                 {
+                    if (isComment && symbol != Constants.CloseCommentTag)
+                    {
+                        // Ignore all symbols inside the comment
+                        continue;
+                    }
+
                     if (firstSymbol == null)
                     {
                         // Set once
                         firstSymbol = symbol;
+                    }
+
+                    if (symbol == Constants.OpenCommentTag)
+                    {
+                        isComment = true;
+                    }
+
+                    if (symbol == Constants.CloseCommentTag)
+                    {
+                        isComment = false;
                     }
 
                     if (symbol == Constants.CloseTag && lastSymbolInText == Constants.OpenEndTag)

@@ -61,6 +61,8 @@ namespace FormatXamlExtension.Classes
         {
             OpenPITag,
             ClosePITag,
+            OpenCommentTag,
+            CloseCommentTag,
             OpenEndTag,
             CloseEmptyTag,
             OpenTag,
