@@ -5,6 +5,8 @@
         <DisplayName>FormatXamlExtension</DisplayName>
         <Description xml:space="preserve">Format XAML document line by line without encoding to preserve the original string</Description>
         <License>LICENSE.txt</License>
+        <Icon>XamlIcon.png</Icon>
+        <PreviewImage>XamlPreview.png</PreviewImage>
         <Tags>format, xaml, code formatting, wpf</Tags>
     </Metadata>
     <Installation>
