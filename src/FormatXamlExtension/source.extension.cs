@@ -9,10 +9,10 @@ namespace FormatXamlExtension
     {
         public const string Id = "FormatXamlExtension.31203c8d-aba6-4bd4-8945-96042e76712d";
         public const string Name = "FormatXamlExtension";
-        public const string Description = @"Empty VSIX Project.";
+        public const string Description = @"Format XAML document line by line without encoding to preserve the original string";
         public const string Language = "en-US";
-        public const string Version = "1.0";
-        public const string Author = "Company";
-        public const string Tags = "";
+        public const string Version = "0.1";
+        public const string Author = "Lixfeld";
+        public const string Tags = "format, xaml, code formatting, wpf";
     }
 }
