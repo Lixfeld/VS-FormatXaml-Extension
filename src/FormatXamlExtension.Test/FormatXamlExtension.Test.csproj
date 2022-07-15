@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TestFiles\AttributesOnMultipleLines.expected" />
+    <None Remove="TestFiles\AttributesOnMultipleLines.test" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.expected" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.test" />
     <None Remove="TestFiles\CommentOnSameLine.expected" />
@@ -26,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="TestFiles\AttributesOnMultipleLines.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\AttributesOnMultipleLines.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestFiles\CommentOnSameLine.expected">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

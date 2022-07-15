@@ -33,5 +33,8 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void CommentOnSameLine() => FileComparer.Verify();
+
+        [Fact]
+        public void AttributesOnMultipleLines() => FileComparer.Verify();
     }
 }
