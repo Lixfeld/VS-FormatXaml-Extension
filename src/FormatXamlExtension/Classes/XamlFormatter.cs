@@ -109,7 +109,7 @@ namespace FormatXamlExtension.Classes
             int attributeIndex = offset + 1; // 1 whitespace as separator
             if (xamlLine.Line.Length - 1 >= attributeIndex)
             {
-                attributeIndentation = offset + 1; // 1 whitespace as separator
+                attributeIndentation = depth * indentSize + offset + 1; // 1 whitespace as separator
             }
             else
             {
@@ -130,7 +130,9 @@ namespace FormatXamlExtension.Classes
                 return Indent(xamlLine.Line, attributeIndentation);
             }
 
-            if (lastSymbolInText == Constants.OpenTag && firstSymbol != Constants.OpenTag)
+            if (lastSymbolInText == Constants.OpenTag && firstSymbol != Constants.OpenTag
+                || lastSymbolInText == Constants.CloseEmptyTag && firstSymbol == Constants.CloseEmptyTag)
+
             {
                 // No Xaml Symbols => Attribute
                 return Indent(xamlLine.Line, attributeIndentation);
