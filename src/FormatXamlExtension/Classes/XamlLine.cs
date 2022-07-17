@@ -28,7 +28,7 @@ namespace FormatXamlExtension.Classes
                 // Only whitespaces or no symbols found before
                 return false;
             }
-            else if (startIndex >= Line.Length - 1)
+            else if (startIndex >= Line.Length)
             {
                 // End of line (max index)
                 return false;
