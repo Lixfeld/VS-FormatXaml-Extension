@@ -11,6 +11,8 @@
     <None Remove="TestFiles\AttributesOnMultipleLines.test" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.expected" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.test" />
+    <None Remove="TestFiles\CloseAngleBracketOnNewLine.expected" />
+    <None Remove="TestFiles\CloseAngleBracketOnNewLine.test" />
     <None Remove="TestFiles\CommentOnSameLine.expected" />
     <None Remove="TestFiles\CommentOnSameLine.test" />
     <None Remove="TestFiles\LineEndingLF.expected" />
@@ -38,6 +40,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\CommentOnSameLine.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\CloseAngleBracketOnNewLine.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\CloseAngleBracketOnNewLine.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\SingleLineComments.expected">

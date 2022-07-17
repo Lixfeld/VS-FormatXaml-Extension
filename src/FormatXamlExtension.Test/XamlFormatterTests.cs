@@ -36,5 +36,8 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void AttributesOnMultipleLines() => FileComparer.Verify();
+
+        [Fact]
+        public void CloseAngleBracketOnNewLine() => FileComparer.Verify();
     }
 }
