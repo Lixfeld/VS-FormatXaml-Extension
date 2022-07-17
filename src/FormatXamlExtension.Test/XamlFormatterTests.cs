@@ -39,5 +39,8 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void CloseAngleBracketOnNewLine() => FileComparer.Verify();
+
+        [Fact]
+        public void IndenSizeTwo() => FileComparer.Verify(indentSize: 2);
     }
 }

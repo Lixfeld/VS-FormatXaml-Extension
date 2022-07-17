@@ -15,6 +15,8 @@
     <None Remove="TestFiles\CloseAngleBracketOnNewLine.test" />
     <None Remove="TestFiles\CommentOnSameLine.expected" />
     <None Remove="TestFiles\CommentOnSameLine.test" />
+    <None Remove="TestFiles\IndenSizeTwo.expected" />
+    <None Remove="TestFiles\IndenSizeTwo.test" />
     <None Remove="TestFiles\LineEndingLF.expected" />
     <None Remove="TestFiles\LineEndingLF.test" />
     <None Remove="TestFiles\NestedElements.expected" />
@@ -46,6 +48,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\CloseAngleBracketOnNewLine.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\IndenSizeTwo.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\IndenSizeTwo.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\SingleLineComments.expected">
