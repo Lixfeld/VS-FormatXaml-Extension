@@ -23,7 +23,7 @@ namespace FormatXamlExtension.Test
             string expectedText = File.ReadAllText(expectedFileName);
 
             XamlText xamlText = new XamlText(testText);
-            XamlFormatter xamlFormatter = new XamlFormatter(DefaultIndentSize, vsOptions);
+            XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
             string actualText = xamlFormatter.Format(xamlText);
 
 #if DEBUG
