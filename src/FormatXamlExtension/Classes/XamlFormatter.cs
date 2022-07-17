@@ -100,16 +100,15 @@ namespace FormatXamlExtension.Classes
         {
             int index = xamlLine.Line.LastIndexOf(lastSymbol);
 
-            // Get index of first attribute
+            // Get offset from symbol to first attribute
             int offset = xamlLine.Line
                 .Substring(index)
                 .TakeWhile(x => !char.IsWhiteSpace(x))
-                .Count();
+                .Count() + 1; // + 1 whitespace as separator
 
-            int attributeIndex = offset + 1; // 1 whitespace as separator
-            if (xamlLine.Line.Length - 1 >= attributeIndex)
+            if (xamlLine.Line.Length >= offset)
             {
-                attributeIndentation = depth * indentSize + offset + 1; // 1 whitespace as separator
+                attributeIndentation = depth * indentSize + offset;
             }
             else
             {

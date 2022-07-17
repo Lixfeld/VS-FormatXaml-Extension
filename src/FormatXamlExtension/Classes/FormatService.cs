@@ -27,7 +27,7 @@ namespace FormatXamlExtension.Classes
             string text = TextViewHelper.GetText(textView);
             XamlText xamlText = new XamlText(text);
 
-            // Load settings
+            // Get active document properties
             int indentSize = dte.ActiveDocument.IndentSize;
 
             XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
