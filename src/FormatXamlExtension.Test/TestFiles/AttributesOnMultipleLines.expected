@@ -1,0 +1,18 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="WpfApp1.CustomControl1">
+    <StackPanel>
+        <Image x:Name="testImage" Margin="5"
+               Width="64"
+               Height="64"/>
+
+        <Button
+            x:Name="testButton"
+            Background="Transparent" BorderBrush="Transparent">
+            <Image
+                x:Name="noImage"
+                Width="64" Height="64"
+                Margin="5"/>
+        </Button>
+    </StackPanel>
+</UserControl>
