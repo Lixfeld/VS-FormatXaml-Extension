@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using static FormatXamlExtension.Classes.Constants;
 
 namespace FormatXamlExtension.Classes
@@ -9,6 +10,8 @@ namespace FormatXamlExtension.Classes
     {
         private int startIndex = 0;
 
+        private readonly string escapedLine;
+
         public string Line { get; }
         public string RawLine { get; }
 
@@ -16,6 +19,8 @@ namespace FormatXamlExtension.Classes
         {
             Line = rawLine.Trim();
             RawLine = rawLine;
+
+            escapedLine = CreateEscapedLine();
         }
 
         public bool TryGetNextSymbol(out string symbol, out int index)
@@ -40,7 +45,7 @@ namespace FormatXamlExtension.Classes
                 // Use xamlSymbols order to avoid substrings
                 foreach (string xamlSymbol in xamlSymbols)
                 {
-                    int symbolIndex = Line.IndexOf(xamlSymbol, startIndex);
+                    int symbolIndex = escapedLine.IndexOf(xamlSymbol, startIndex);
                     if (symbolIndex >= 0)
                     {
                         symbols.Add((symbolIndex, xamlSymbol));
@@ -84,5 +89,25 @@ namespace FormatXamlExtension.Classes
             OpenTag,
             CloseTag
         };
+
+        /// <summary>
+        /// Currently only necessary for Avalonia Child Selectors.
+        /// Example: Selector="StackPanel > Button"
+        /// </summary>
+        private string CreateEscapedLine()
+        {
+            Match match = Regex.Match(Line, @"Selector\s*=\s*['""].*?(>).*?['""]");
+            if (match.Success)
+            {
+                int symbolIndex = match.Groups[1].Index;
+
+                // Replace the ">" character in the selector with any other single character
+                char[] charArray = Line.ToCharArray();
+                charArray[symbolIndex] = 'x';
+                return new string(charArray);
+            }
+
+            return Line;
+        }
     }
 }
