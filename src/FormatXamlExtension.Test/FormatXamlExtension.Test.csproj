@@ -19,6 +19,10 @@
     <None Remove="TestFiles\IndenSizeTwo.test" />
     <None Remove="TestFiles\LineEndingLF.expected" />
     <None Remove="TestFiles\LineEndingLF.test" />
+    <None Remove="TestFiles\MultiLineCommentsExtraIndent.expected" />
+    <None Remove="TestFiles\MultiLineCommentsExtraIndent.test" />
+    <None Remove="TestFiles\MultiLineCommentsSameIndent.expected" />
+    <None Remove="TestFiles\MultiLineCommentsSameIndent.test" />
     <None Remove="TestFiles\NestedElements.expected" />
     <None Remove="TestFiles\NestedElements.test" />
     <None Remove="TestFiles\NewLineAtEnd.expected" />
@@ -54,6 +58,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\IndenSizeTwo.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\MultiLineCommentsSameIndent.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\MultiLineCommentsSameIndent.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\MultiLineCommentsExtraIndent.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\MultiLineCommentsExtraIndent.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\SingleLineComments.expected">

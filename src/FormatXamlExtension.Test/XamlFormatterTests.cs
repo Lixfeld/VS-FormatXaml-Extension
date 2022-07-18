@@ -42,5 +42,19 @@ namespace FormatXamlExtension.Test
 
         [Fact]
         public void IndenSizeTwo() => FileComparer.Verify(indentSize: 2);
+
+        [Fact]
+        public void MultiLineCommentsSameIndent()
+        {
+            VSOptions vsOptions = new VSOptions(commentIndentation: CommentIndentation.Same);
+            FileComparer.Verify(vsOptions);
+        }
+
+        [Fact]
+        public void MultiLineCommentsExtraIndent()
+        {
+            VSOptions vsOptions = new VSOptions(commentIndentation: CommentIndentation.Extra);
+            FileComparer.Verify(vsOptions);
+        }
     }
 }
