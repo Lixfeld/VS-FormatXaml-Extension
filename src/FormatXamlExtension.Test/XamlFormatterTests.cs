@@ -56,5 +56,19 @@ namespace FormatXamlExtension.Test
             VSOptions vsOptions = new VSOptions(commentIndentation: CommentIndentation.Extra);
             FileComparer.Verify(vsOptions);
         }
+
+        [Fact]
+        public void NoSpaceBeforeEmptyTag()
+        {
+            VSOptions vsOptions = new VSOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.Zero);
+            FileComparer.Verify(vsOptions);
+        }
+
+        [Fact]
+        public void OneSpaceBeforeEmptyTag()
+        {
+            VSOptions vsOptions = new VSOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.One);
+            FileComparer.Verify(vsOptions);
+        }
     }
 }

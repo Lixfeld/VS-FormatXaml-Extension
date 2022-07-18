@@ -29,6 +29,10 @@
     <None Remove="TestFiles\NewLineAtEnd.test" />
     <None Remove="TestFiles\NoNewLineAtEnd.expected" />
     <None Remove="TestFiles\NoNewLineAtEnd.test" />
+    <None Remove="TestFiles\NoSpaceBeforeEmptyTag.expected" />
+    <None Remove="TestFiles\NoSpaceBeforeEmptyTag.test" />
+    <None Remove="TestFiles\OneSpaceBeforeEmptyTag.expected" />
+    <None Remove="TestFiles\OneSpaceBeforeEmptyTag.test" />
     <None Remove="TestFiles\SingleLineComments.expected" />
     <None Remove="TestFiles\SingleLineComments.test" />
     <None Remove="TestFiles\XmlVersion.expected" />
@@ -70,6 +74,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\MultiLineCommentsExtraIndent.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\OneSpaceBeforeEmptyTag.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\OneSpaceBeforeEmptyTag.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\NoSpaceBeforeEmptyTag.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\NoSpaceBeforeEmptyTag.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\SingleLineComments.expected">
