@@ -101,6 +101,25 @@ namespace FormatXamlExtension.Classes
                 depth = lineDepth;
             }
 
+            int whitespaceCount = GetWhitespaceCount();
+            if (whitespaceCount != -1)
+            {
+                string whitespace = new string(' ', whitespaceCount);
+                for (int i = 0; i < formattedLines.Count; i++)
+                {
+                    string line = formattedLines[i];
+                    // Only change lines which ends with closing empty tag BUT also includes other characters
+                    if (line.EndsWith(Constants.CloseEmptyTag) && line.Trim() != Constants.CloseEmptyTag)
+                    {
+                        string trimmedLine = line.Remove(line.Length - 2, 2).TrimEnd();
+                        string newLine = trimmedLine + whitespace + Constants.CloseEmptyTag;
+
+                        // Replace existing line
+                        formattedLines[i] = newLine;
+                    }
+                }
+            }
+
             string lineEnding = GetLineEnding(xamlText.LineEnding);
             string formattedText = string.Join(lineEnding, formattedLines);
             return formattedText;
@@ -178,6 +197,22 @@ namespace FormatXamlExtension.Classes
                 case LineEnding.Auto:
                 default:
                     return xamlLineEnding;
+            }
+        }
+
+        private int GetWhitespaceCount()
+        {
+            switch (vsOptions.WhitespaceBeforeEmptyTag)
+            {
+                case WhitespaceBeforeEmptyTag.Zero:
+                    return 0;
+
+                case WhitespaceBeforeEmptyTag.One:
+                    return 1;
+
+                case WhitespaceBeforeEmptyTag.Ignore:
+                default:
+                    return -1;
             }
         }
     }

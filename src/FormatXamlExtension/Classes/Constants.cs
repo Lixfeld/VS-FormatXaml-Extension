@@ -13,6 +13,13 @@
         Extra
     }
 
+    public enum WhitespaceBeforeEmptyTag
+    {
+        Ignore,
+        Zero,
+        One
+    }
+
     public class Constants
     {
         public const string UnixLineEnding = "\n";

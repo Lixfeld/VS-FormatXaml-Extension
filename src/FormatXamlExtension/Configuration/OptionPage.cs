@@ -29,9 +29,14 @@ namespace FormatXamlExtension.Configuration
         [Description("Indentation level inside of multi-line comments.\r\nDefault: Same")]
         public CommentIndentation CommentIndentation { get; set; } = CommentIndentation.Same;
 
+        [Category(Category)]
+        [DisplayName("Whitespace before empty tag")]
+        [Description("Number of whitespaces before a closing empty tag (/>).\r\nDefault: Ignore")]
+        public WhitespaceBeforeEmptyTag WhitespaceBeforeEmptyTag { get; set; } = WhitespaceBeforeEmptyTag.Ignore;
+
         public VSOptions GetVSOptions()
         {
-            return new VSOptions(ExecuteOnSave, FileExtensions, LineEnding, CommentIndentation);
+            return new VSOptions(ExecuteOnSave, FileExtensions, LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
         }
     }
 }
