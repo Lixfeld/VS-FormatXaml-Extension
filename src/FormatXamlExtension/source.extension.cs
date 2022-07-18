@@ -11,7 +11,7 @@ namespace FormatXamlExtension
         public const string Name = "FormatXamlExtension";
         public const string Description = @"Format XAML document line by line without encoding to preserve the original string";
         public const string Language = "en-US";
-        public const string Version = "0.1";
+        public const string Version = "0.2";
         public const string Author = "Lixfeld";
         public const string Tags = "format, xaml, code formatting, wpf";
     }
