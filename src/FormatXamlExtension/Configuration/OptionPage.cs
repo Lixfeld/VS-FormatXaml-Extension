@@ -6,7 +6,7 @@ namespace FormatXamlExtension.Configuration
 {
     internal class OptionPage : DialogPage
     {
-        public const string Category = "Format Xaml";
+        public const string Category = "Format XAML";
         public const string SubCategory = "General";
 
         [Category(Category)]
@@ -36,7 +36,12 @@ namespace FormatXamlExtension.Configuration
 
         public VSOptions GetVSOptions()
         {
-            return new VSOptions(ExecuteOnSave, FileExtensions, LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
+            return new VSOptions(
+                ExecuteOnSave,
+                FileExtensions,
+                LineEnding,
+                CommentIndentation,
+                WhitespaceBeforeEmptyTag);
         }
     }
 }

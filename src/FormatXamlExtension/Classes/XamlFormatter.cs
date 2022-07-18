@@ -26,6 +26,7 @@ namespace FormatXamlExtension.Classes
         {
             depth = 0;
             attributeIndentation = 0;
+            isComment = false;
             lastSymbolInText = null;
         }
 
@@ -101,6 +102,13 @@ namespace FormatXamlExtension.Classes
                 depth = lineDepth;
             }
 
+            string lineEnding = GetLineEnding(xamlText.LineEnding);
+            string formattedText = GetFormattedText(formattedLines, lineEnding);
+            return formattedText;
+        }
+
+        private string GetFormattedText(List<string> formattedLines, string lineEnding)
+        {
             int whitespaceCount = GetWhitespaceCount();
             if (whitespaceCount != -1)
             {
@@ -111,6 +119,7 @@ namespace FormatXamlExtension.Classes
                     // Only change lines which ends with closing empty tag BUT also includes other characters
                     if (line.EndsWith(Constants.CloseEmptyTag) && line.Trim() != Constants.CloseEmptyTag)
                     {
+                        // Remove closing empty tag before trimming and adding X number of whitespaces
                         string trimmedLine = line.Remove(line.Length - 2, 2).TrimEnd();
                         string newLine = trimmedLine + whitespace + Constants.CloseEmptyTag;
 
@@ -120,9 +129,7 @@ namespace FormatXamlExtension.Classes
                 }
             }
 
-            string lineEnding = GetLineEnding(xamlText.LineEnding);
-            string formattedText = string.Join(lineEnding, formattedLines);
-            return formattedText;
+            return string.Join(lineEnding, formattedLines);
         }
 
         private void SetAttributeIndentation(XamlLine xamlLine, string lastSymbol)
@@ -168,6 +175,7 @@ namespace FormatXamlExtension.Classes
 
             if (vsOptions.CommentIndentation == CommentIndentation.Extra && xamlLine.Line == Constants.CloseCommentTag)
             {
+                // Line contains only closing comment tag
                 int closeCommentDepth = depth - 1;
                 return IndentWithDepth(xamlLine.Line, closeCommentDepth);
             }
@@ -176,7 +184,10 @@ namespace FormatXamlExtension.Classes
             return IndentWithDepth(xamlLine.Line, elementDepth);
         }
 
-        private string IndentWithDepth(string text, int depth) => Indent(text, depth * indentSize);
+        private string IndentWithDepth(string text, int depth)
+        {
+            return Indent(text, depth * indentSize);
+        }
 
         private string Indent(string text, int indentationSize)
         {

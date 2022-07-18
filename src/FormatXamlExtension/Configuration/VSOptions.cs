@@ -17,7 +17,12 @@ namespace FormatXamlExtension.Configuration
         /// <summary>
         /// All options from DialogPage
         /// </summary>
-        public VSOptions(bool executeOnSave, string fileExtensions, LineEnding lineEnding, CommentIndentation commentIndentation, WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag)
+        public VSOptions(
+            bool executeOnSave,
+            string fileExtensions,
+            LineEnding lineEnding,
+            CommentIndentation commentIndentation,
+            WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag)
         {
             ExecuteOnSave = executeOnSave;
             FileExtensions = fileExtensions;
@@ -29,7 +34,10 @@ namespace FormatXamlExtension.Configuration
         /// <summary>
         /// Only for Tests
         /// </summary>
-        public VSOptions(LineEnding lineEnding = LineEnding.Auto, CommentIndentation commentIndentation = CommentIndentation.Same, WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag = default)
+        public VSOptions(
+            LineEnding lineEnding = LineEnding.Auto,
+            CommentIndentation commentIndentation = CommentIndentation.Same,
+            WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag = WhitespaceBeforeEmptyTag.Ignore)
         {
             LineEnding = lineEnding;
             CommentIndentation = commentIndentation;

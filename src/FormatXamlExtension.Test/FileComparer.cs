@@ -14,7 +14,10 @@ namespace FormatXamlExtension.Test
         public static void Verify(VSOptions vsOptions = null, int indentSize = DefaultIndentSize, [CallerMemberName] string fileName = "")
         {
             if (vsOptions == null)
-                vsOptions = new VSOptions(LineEnding.Auto);
+            {
+                // Default options
+                vsOptions = new VSOptions();
+            }
 
             string testFileName = TestFilesDirectory + fileName + ".test";
             string expectedFileName = TestFilesDirectory + fileName + ".expected";
@@ -22,6 +25,7 @@ namespace FormatXamlExtension.Test
             string testText = File.ReadAllText(testFileName);
             string expectedText = File.ReadAllText(expectedFileName);
 
+            // Formatting
             XamlText xamlText = new XamlText(testText);
             XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
             string actualText = xamlFormatter.Format(xamlText);

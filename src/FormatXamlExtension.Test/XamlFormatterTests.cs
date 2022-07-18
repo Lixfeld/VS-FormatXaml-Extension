@@ -24,7 +24,7 @@ namespace FormatXamlExtension.Test
         [Fact]
         public void LineEndingLF()
         {
-            VSOptions vsOptions = new VSOptions(LineEnding.LF);
+            VSOptions vsOptions = new VSOptions(lineEnding: LineEnding.LF);
             FileComparer.Verify(vsOptions);
         }
 
