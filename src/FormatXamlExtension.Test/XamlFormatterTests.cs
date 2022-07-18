@@ -70,5 +70,8 @@ namespace FormatXamlExtension.Test
             VSOptions vsOptions = new VSOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.One);
             FileComparer.Verify(vsOptions);
         }
+
+        [Fact]
+        public void AvaloniaChildSelector() => FileComparer.Verify();
     }
 }

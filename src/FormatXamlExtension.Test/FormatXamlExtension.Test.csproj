@@ -11,6 +11,8 @@
     <None Remove="TestFiles\AttributesOnMultipleLines.test" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.expected" />
     <None Remove="TestFiles\AttributesStartsOnSecondLine.test" />
+    <None Remove="TestFiles\AvaloniaChildSelector.expected" />
+    <None Remove="TestFiles\AvaloniaChildSelector.test" />
     <None Remove="TestFiles\CloseAngleBracketOnNewLine.expected" />
     <None Remove="TestFiles\CloseAngleBracketOnNewLine.test" />
     <None Remove="TestFiles\CommentOnSameLine.expected" />
@@ -74,6 +76,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\MultiLineCommentsExtraIndent.test">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\AvaloniaChildSelector.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\AvaloniaChildSelector.test">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestFiles\OneSpaceBeforeEmptyTag.expected">
