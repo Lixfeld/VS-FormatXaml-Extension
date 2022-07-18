@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="FormatXamlExtension.31203c8d-aba6-4bd4-8945-96042e76712d" Version="1.0" Language="en-US" Publisher="Lixfeld" />
-        <DisplayName>FormatXamlExtension</DisplayName>
+        <Identity Id="FormatXAML2022.31203c8d-aba6-4bd4-8945-96042e76712d" Version="1.0" Language="en-US" Publisher="Lixfeld" />
+        <DisplayName>Format XAML 2022</DisplayName>
         <Description xml:space="preserve">Format XAML document line by line without encoding to preserve the original string</Description>
         <License>LICENSE.txt</License>
-        <Icon>XamlIcon.png</Icon>
-        <PreviewImage>XamlPreview.png</PreviewImage>
+        <Icon>Icon.png</Icon>
+        <PreviewImage>Preview.png</PreviewImage>
         <Tags>format, xaml, code formatting, wpf</Tags>
     </Metadata>
     <Installation>

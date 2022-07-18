@@ -7,8 +7,8 @@ namespace FormatXamlExtension
 {
     internal sealed partial class Vsix
     {
-        public const string Id = "FormatXamlExtension.31203c8d-aba6-4bd4-8945-96042e76712d";
-        public const string Name = "FormatXamlExtension";
+        public const string Id = "FormatXAML2022.31203c8d-aba6-4bd4-8945-96042e76712d";
+        public const string Name = "Format XAML 2022";
         public const string Description = @"Format XAML document line by line without encoding to preserve the original string";
         public const string Language = "en-US";
         public const string Version = "1.0";
