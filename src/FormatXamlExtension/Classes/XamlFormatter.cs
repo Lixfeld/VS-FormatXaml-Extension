@@ -58,11 +58,21 @@ namespace FormatXamlExtension.Classes
                     if (symbol == Constants.OpenCommentTag)
                     {
                         isComment = true;
+                        if (vsOptions.CommentIndentation == CommentIndentation.Extra)
+                        {
+                            // Add extra indentation
+                            lineDepth++;
+                        }
                     }
 
                     if (symbol == Constants.CloseCommentTag)
                     {
                         isComment = false;
+                        if (vsOptions.CommentIndentation == CommentIndentation.Extra)
+                        {
+                            // Remove extra indentation
+                            lineDepth--;
+                        }
                     }
 
                     if (symbol == Constants.CloseTag && lastSymbolInText == Constants.OpenEndTag)
@@ -135,6 +145,12 @@ namespace FormatXamlExtension.Classes
             {
                 // No Xaml Symbols => Attribute
                 return Indent(xamlLine.Line, attributeIndentation);
+            }
+
+            if (vsOptions.CommentIndentation == CommentIndentation.Extra && xamlLine.Line == Constants.CloseCommentTag)
+            {
+                int closeCommentDepth = depth - 1;
+                return IndentWithDepth(xamlLine.Line, closeCommentDepth);
             }
 
             int elementDepth = firstSymbol == Constants.OpenEndTag ? depth - 1 : depth;

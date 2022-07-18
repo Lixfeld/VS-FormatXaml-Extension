@@ -24,9 +24,14 @@ namespace FormatXamlExtension.Configuration
         [Description("End of Line characters.\r\nDefault: Auto")]
         public LineEnding LineEnding { get; set; } = LineEnding.Auto;
 
+        [Category(Category)]
+        [DisplayName("Comment Indentation")]
+        [Description("Indentation level inside of multi-line comments.\r\nDefault: Same")]
+        public CommentIndentation CommentIndentation { get; set; } = CommentIndentation.Same;
+
         public VSOptions GetVSOptions()
         {
-            return new VSOptions(ExecuteOnSave, FileExtensions, LineEnding);
+            return new VSOptions(ExecuteOnSave, FileExtensions, LineEnding, CommentIndentation);
         }
     }
 }

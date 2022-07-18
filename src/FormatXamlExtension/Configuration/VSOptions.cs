@@ -10,22 +10,26 @@ namespace FormatXamlExtension.Configuration
 
         public LineEnding LineEnding { get; }
 
+        public CommentIndentation CommentIndentation { get; }
+
         /// <summary>
         /// All options from DialogPage
         /// </summary>
-        public VSOptions(bool executeOnSave, string fileExtensions, LineEnding lineEnding)
+        public VSOptions(bool executeOnSave, string fileExtensions, LineEnding lineEnding, CommentIndentation commentIndentation)
         {
             ExecuteOnSave = executeOnSave;
             FileExtensions = fileExtensions;
             LineEnding = lineEnding;
+            CommentIndentation = commentIndentation;
         }
 
         /// <summary>
         /// Only for Tests
         /// </summary>
-        public VSOptions(LineEnding lineEnding)
+        public VSOptions(LineEnding lineEnding = LineEnding.Auto, CommentIndentation commentIndentation = CommentIndentation.Same)
         {
             LineEnding = lineEnding;
+            CommentIndentation = commentIndentation;
         }
     }
 }

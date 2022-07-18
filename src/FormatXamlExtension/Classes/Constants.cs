@@ -7,6 +7,12 @@
         LF
     }
 
+    public enum CommentIndentation
+    {
+        Same,
+        Extra
+    }
+
     public class Constants
     {
         public const string UnixLineEnding = "\n";
