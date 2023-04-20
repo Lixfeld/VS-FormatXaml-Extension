@@ -32,7 +32,8 @@ namespace FormatXamlExtension.Classes
 
         public static void ReplaceText(IWpfTextView textView, string newText)
         {
-            using (ITextEdit edit = textView.TextBuffer.CreateEdit())
+            // Use "EditOptions.DefaultMinimalChange" to keep caret and scroll position
+            using (ITextEdit edit = textView.TextBuffer.CreateEdit(EditOptions.DefaultMinimalChange, default, default))
             {
                 edit.Replace(0, textView.TextBuffer.CurrentSnapshot.Length, newText);
                 edit.Apply();
