@@ -11,7 +11,7 @@ namespace FormatXamlExtension
         public const string Name = "Format XAML 2022";
         public const string Description = @"Format XAML document line by line without encoding to preserve the original string";
         public const string Language = "en-US";
-        public const string Version = "1.0";
+        public const string Version = "1.0.1";
         public const string Author = "Lixfeld";
         public const string Tags = "format, xaml, code formatting, wpf";
     }
