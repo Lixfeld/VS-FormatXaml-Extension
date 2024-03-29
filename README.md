@@ -10,6 +10,12 @@ Unlike [XAML Styler][2] this extension formats XAML documents line by line witho
 ### Options
 In the new category "Format XAML" you can disable the formatting on save and change other settings.  
 
+#### Version 1.2
+Select a configuration source for indentation:  
+- EditorConfig (default)
+- VisualStudio
+- Custom
+
 ### Keyboard shortcut
 You can add a shortcut to the command in the Tools menu.  
 Options -> Environment -> Keyboard -> Tools.FormatXAML  
