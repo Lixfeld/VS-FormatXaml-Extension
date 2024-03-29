@@ -34,7 +34,7 @@ namespace FormatXamlExtension
     [ProvideAutoLoad(UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideOptionPage(typeof(OptionPage), OptionPage.Category, OptionPage.SubCategory, 0, 0, true)]
+    [ProvideOptionPage(typeof(OptionPage), OptionPage.Category, OptionPage.Page, 0, 0, true)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class FormatXamlExtensionPackage : AsyncPackage
     {
