@@ -35,6 +35,10 @@
         public const int DefaultIndentSize = 4;
         public const string IndentSizeKey = "indent_size";
 
+        public const string TextEditorCategory = "TextEditor";
+        public const string XAMLPage = "XAML";
+        public const string IndentSizeItem = "IndentSize";
+
         // Processing Instruction (PI) Tag: <?...?>
         public const string OpenPITag = "<?";
         public const string ClosePITag = "?>";

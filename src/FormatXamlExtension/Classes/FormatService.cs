@@ -52,16 +52,33 @@ namespace FormatXamlExtension.Classes
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            EditorConfigParser parser = new EditorConfigParser();
-            FileConfiguration configuration = parser.Parse(dte.ActiveDocument.FullName);
-            IReadOnlyDictionary<string, string> properties = configuration.Properties;
-
-            if (properties.TryGetValue(Constants.IndentSizeKey, out string indentSizeAsString))
+            if (vsOptions.Configuration == IndentationConfiguration.EditorConfig)
             {
+                EditorConfigParser parser = new EditorConfigParser();
+                FileConfiguration configuration = parser.Parse(dte.ActiveDocument.FullName);
+                IReadOnlyDictionary<string, string> properties = configuration.Properties;
+
+                if (properties.TryGetValue(Constants.IndentSizeKey, out string indentSizeAsString))
+                {
+                    if (int.TryParse(indentSizeAsString, out int indentSize) && indentSize > 0)
+                    {
+                        return indentSize;
+                    }
+                }
+            }
+            else if (vsOptions.Configuration == IndentationConfiguration.VisualStudio)
+            {
+                Properties properties = dte.Properties[Constants.TextEditorCategory, Constants.XAMLPage];
+                string indentSizeAsString = properties.Item(Constants.IndentSizeItem).Value.ToString();
+
                 if (int.TryParse(indentSizeAsString, out int indentSize) && indentSize > 0)
                 {
                     return indentSize;
                 }
+            }
+            else if (vsOptions.Configuration == IndentationConfiguration.Custom)
+            {
+                return vsOptions.CustomIndentSize;
             }
 
             return Constants.DefaultIndentSize;
