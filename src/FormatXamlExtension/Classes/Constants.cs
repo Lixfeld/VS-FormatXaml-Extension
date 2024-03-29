@@ -26,6 +26,7 @@
         public const string WindowsLineEnding = "\r\n";
 
         public const int DefaultIndentSize = 4;
+        public const string IndentSizeKey = "indent_size";
 
         // Processing Instruction (PI) Tag: <?...?>
         public const string OpenPITag = "<?";

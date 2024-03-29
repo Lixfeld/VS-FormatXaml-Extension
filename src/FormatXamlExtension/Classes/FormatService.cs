@@ -1,8 +1,10 @@
-﻿using EnvDTE;
+﻿using EditorConfig.Core;
+using EnvDTE;
 using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
+using System.Collections.Generic;
 
 namespace FormatXamlExtension.Classes
 {
@@ -27,9 +29,7 @@ namespace FormatXamlExtension.Classes
             string text = TextViewHelper.GetText(textView);
             XamlText xamlText = new XamlText(text);
 
-            // Get active document properties
-            int indentSize = dte.ActiveDocument.IndentSize;
-
+            int indentSize = GetIndentationSize();
             XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
             string newText = xamlFormatter.Format(xamlText);
 
@@ -46,6 +46,25 @@ namespace FormatXamlExtension.Classes
             {
                 dte.UndoContext.Close();
             }
+        }
+
+        private int GetIndentationSize()
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            EditorConfigParser parser = new EditorConfigParser();
+            FileConfiguration configuration = parser.Parse(dte.ActiveDocument.FullName);
+            IReadOnlyDictionary<string, string> properties = configuration.Properties;
+
+            if (properties.TryGetValue(Constants.IndentSizeKey, out string indentSizeAsString))
+            {
+                if (int.TryParse(indentSizeAsString, out int indentSize) && indentSize > 0)
+                {
+                    return indentSize;
+                }
+            }
+
+            return Constants.DefaultIndentSize;
         }
 
         private bool ShouldFormat()
