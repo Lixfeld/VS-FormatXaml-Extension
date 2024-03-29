@@ -13,6 +13,8 @@ namespace FormatXamlExtension.Configuration
         public CommentIndentation CommentIndentation { get; }
 
         public WhitespaceBeforeEmptyTag WhitespaceBeforeEmptyTag { get; }
+        public IndentationConfiguration Configuration { get; }
+        public int CustomIndentSize { get; }
 
         /// <summary>
         /// All options from DialogPage
@@ -22,13 +24,17 @@ namespace FormatXamlExtension.Configuration
             string fileExtensions,
             LineEnding lineEnding,
             CommentIndentation commentIndentation,
-            WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag)
+            WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag,
+            IndentationConfiguration configuration,
+            int customIndentSize)
         {
             ExecuteOnSave = executeOnSave;
             FileExtensions = fileExtensions;
             LineEnding = lineEnding;
             CommentIndentation = commentIndentation;
             WhitespaceBeforeEmptyTag = whitespaceBeforeEmptyTag;
+            Configuration = configuration;
+            CustomIndentSize = customIndentSize;
         }
 
         /// <summary>

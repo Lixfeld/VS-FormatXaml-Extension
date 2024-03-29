@@ -26,7 +26,29 @@ namespace FormatXamlExtension.Configuration
         public string FileExtensions { get; set; } = ".xaml .axaml";
 
         [Category(Indentation)]
-        [DisplayName("Comment Indentation")]
+        [DisplayName("Configuration")]
+        [Description("Configuration source for indentation.\r\nDefault: EditorConfig")]
+        public IndentationConfiguration Configuration { get; set; } = IndentationConfiguration.EditorConfig;
+
+        private int customIndentSize = 4;
+        [Category(Indentation)]
+        [DisplayName("Custom indent size")]
+        [Description("Indentation size for \"Custom\" configuration.\r\nDefault: 4")]
+        public int CustomIndentSize
+        {
+            get { return customIndentSize; }
+            set
+            {
+                // Visual Studio options also only allow values between 1 and 60
+                if (value >= 1 && value <= 60)
+                {
+                    customIndentSize = value;
+                }
+            }
+        }
+
+        [Category(Indentation)]
+        [DisplayName("Multi-Line comments")]
         [Description("Indentation level inside of multi-line comments.\r\nDefault: Same")]
         public CommentIndentation CommentIndentation { get; set; } = CommentIndentation.Same;
 
@@ -47,7 +69,9 @@ namespace FormatXamlExtension.Configuration
                 FileExtensions,
                 LineEnding,
                 CommentIndentation,
-                WhitespaceBeforeEmptyTag);
+                WhitespaceBeforeEmptyTag,
+                Configuration,
+                CustomIndentSize);
         }
     }
 }

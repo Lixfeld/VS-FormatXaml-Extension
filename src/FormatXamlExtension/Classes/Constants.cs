@@ -20,6 +20,13 @@
         One
     }
 
+    public enum IndentationConfiguration
+    {
+        EditorConfig,
+        VisualStudio,
+        Custom
+    }
+
     public class Constants
     {
         public const string UnixLineEnding = "\n";
