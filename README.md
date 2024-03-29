@@ -14,6 +14,10 @@ In the new category "Format XAML" you can disable the formatting on save and cha
 You can add a shortcut to the command in the Tools menu.  
 Options -> Environment -> Keyboard -> Tools.FormatXAML  
 
+### License
+This project is licensed under the [MIT](LICENSE) license.  
+Please see the [third party notices](THIRD-PARTY-NOTICES.txt) for included open-source libraries.  
+
 [1]: https://marketplace.visualstudio.com/items?itemName=DannOh.XamlFormatter
 [2]: https://marketplace.visualstudio.com/items?itemName=TeamXavalon.XAMLStyler
 
