@@ -1,0 +1,30 @@
+# This workflow will build the Visual Studio extension
+# For more information see: https://blog.elmah.io/build-and-publish-visual-studio-extensions-with-github-actions/
+
+name: Build VSIX
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+        PROJECT_FILEPATH: "src/FormatXamlExtension/FormatXamlExtension.csproj"
+        RELEASE_DIRECTORY: "src/FormatXamlExtension/bin/Release"
+    
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Add nuget to PATH
+      uses: nuget/setup-nuget@v2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
+    - name: Restore
+      run: nuget restore ${{ env.PROJECT_FILEPATH }}
+    - name: Build
+      run: msbuild ${{ env.PROJECT_FILEPATH }} /p:configuration=Release /p:DeployExtension=false
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        path: ${{ env.RELEASE_DIRECTORY }}/*.vsix
