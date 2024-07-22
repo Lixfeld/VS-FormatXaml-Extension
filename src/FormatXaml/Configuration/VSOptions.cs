@@ -1,6 +1,4 @@
-﻿using FormatXamlExtension.Classes;
-
-namespace FormatXamlExtension.Configuration
+﻿namespace FormatXaml.Configuration
 {
     public class VSOptions
     {

@@ -1,4 +1,4 @@
-﻿namespace FormatXamlExtension.Classes
+﻿namespace FormatXaml
 {
     public enum LineEnding
     {

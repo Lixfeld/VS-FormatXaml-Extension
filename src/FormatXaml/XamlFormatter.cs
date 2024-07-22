@@ -1,9 +1,9 @@
-﻿using FormatXamlExtension.Configuration;
+﻿using FormatXaml.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FormatXamlExtension.Classes
+namespace FormatXaml
 {
     public class XamlFormatter
     {

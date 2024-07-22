@@ -1,9 +1,11 @@
-﻿using FormatXamlExtension.Classes;
+﻿using FormatXaml;
+using FormatXaml.Configuration;
+using FormatXamlExtension.Classes;
 using FormatXamlExtension.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Xunit;
-using static FormatXamlExtension.Classes.Constants;
+using static FormatXaml.Constants;
 
 namespace FormatXamlExtension.Test
 {

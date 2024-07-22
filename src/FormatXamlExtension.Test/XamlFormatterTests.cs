@@ -1,4 +1,6 @@
-﻿using FormatXamlExtension.Classes;
+﻿using FormatXaml;
+using FormatXaml.Configuration;
+using FormatXamlExtension.Classes;
 using FormatXamlExtension.Configuration;
 using Xunit;
 

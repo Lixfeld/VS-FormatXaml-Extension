@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using static FormatXamlExtension.Classes.Constants;
+using static FormatXaml.Constants;
 
-namespace FormatXamlExtension.Classes
+namespace FormatXaml
 {
     public class XamlLine
     {

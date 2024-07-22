@@ -1,10 +1,12 @@
 ﻿using EditorConfig.Core;
 using EnvDTE;
-using FormatXamlExtension.Configuration;
+using FormatXaml;
+using FormatXaml.Configuration;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
 using System.Collections.Generic;
+using Constants = FormatXaml.Constants;
 
 namespace FormatXamlExtension.Classes
 {

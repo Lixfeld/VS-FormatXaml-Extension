@@ -1,6 +1,6 @@
 ﻿using EnvDTE;
+using FormatXaml.Configuration;
 using FormatXamlExtension.Classes;
-using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 
