@@ -1,11 +1,9 @@
-﻿using EditorConfig.Core;
-using EnvDTE;
+﻿using EnvDTE;
 using FormatXaml;
 using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
-using System.Collections.Generic;
 using Constants = FormatXaml.Constants;
 
 namespace FormatXamlExtension.Classes
@@ -58,16 +56,10 @@ namespace FormatXamlExtension.Classes
 
             if (vsOptions.Configuration == IndentationConfiguration.EditorConfig)
             {
-                EditorConfigParser parser = new EditorConfigParser();
-                FileConfiguration configuration = parser.Parse(dte.ActiveDocument.FullName);
-                IReadOnlyDictionary<string, string> properties = configuration.Properties;
-
-                if (properties.TryGetValue(Constants.IndentSizeKey, out string indentSizeAsString))
+                string filepath = dte.ActiveDocument.FullName;
+                if (EditorConfigHelper.TryGetIndentationSize(filepath, out int indentSize))
                 {
-                    if (int.TryParse(indentSizeAsString, out int indentSize) && indentSize > 0)
-                    {
-                        return indentSize;
-                    }
+                    return indentSize;
                 }
             }
             else if (vsOptions.Configuration == IndentationConfiguration.VisualStudio)
