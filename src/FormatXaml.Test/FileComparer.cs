@@ -1,7 +1,5 @@
 ﻿using FormatXaml;
-using FormatXaml.Configuration;
 using System.Runtime.CompilerServices;
-using static FormatXaml.Constants;
 
 namespace FormatXamlExtension.Test
 {
@@ -9,12 +7,12 @@ namespace FormatXamlExtension.Test
     {
         private const string TestFilesDirectory = "TestFiles\\";
 
-        public static void Verify(VSOptions? vsOptions = null, int indentSize = DefaultIndentSize, [CallerMemberName] string fileName = "")
+        public static void Verify(XamlFormatterOptions? options = null, [CallerMemberName] string fileName = "")
         {
-            if (vsOptions == null)
+            if (options == null)
             {
                 // Default options
-                vsOptions = new VSOptions();
+                options = XamlFormatterTests.TestOptions();
             }
 
             string testFileName = TestFilesDirectory + fileName + ".test";
@@ -25,7 +23,7 @@ namespace FormatXamlExtension.Test
 
             // Formatting
             XamlText xamlText = new XamlText(testText);
-            XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
+            XamlFormatter xamlFormatter = new XamlFormatter(options);
             string actualText = xamlFormatter.Format(xamlText);
 
 #if DEBUG

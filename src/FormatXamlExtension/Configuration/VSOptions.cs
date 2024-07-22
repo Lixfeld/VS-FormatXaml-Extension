@@ -1,4 +1,6 @@
-﻿namespace FormatXaml.Configuration
+﻿using FormatXaml;
+
+namespace FormatXamlExtension.Configuration
 {
     public class VSOptions
     {
@@ -11,7 +13,9 @@
         public CommentIndentation CommentIndentation { get; }
 
         public WhitespaceBeforeEmptyTag WhitespaceBeforeEmptyTag { get; }
+
         public IndentationConfiguration Configuration { get; }
+
         public int CustomIndentSize { get; }
 
         /// <summary>
@@ -35,17 +39,9 @@
             CustomIndentSize = customIndentSize;
         }
 
-        /// <summary>
-        /// Only for Tests
-        /// </summary>
-        public VSOptions(
-            LineEnding lineEnding = LineEnding.Auto,
-            CommentIndentation commentIndentation = CommentIndentation.Same,
-            WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag = WhitespaceBeforeEmptyTag.Ignore)
+        public XamlFormatterOptions CreateXamlFormatterOptions(int indentSize)
         {
-            LineEnding = lineEnding;
-            CommentIndentation = commentIndentation;
-            WhitespaceBeforeEmptyTag = whitespaceBeforeEmptyTag;
+            return new XamlFormatterOptions(indentSize, LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
         }
     }
 }

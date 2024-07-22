@@ -1,5 +1,4 @@
-﻿using FormatXaml.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,8 +6,7 @@ namespace FormatXaml
 {
     public class XamlFormatter
     {
-        private readonly int indentSize;
-        private readonly VSOptions vsOptions;
+        private readonly XamlFormatterOptions options;
 
         private int depth;
         private int attributeIndentation;
@@ -16,10 +14,9 @@ namespace FormatXaml
         private bool isComment;
         private string lastSymbolInText;
 
-        public XamlFormatter(int indentSize, VSOptions vsOptions)
+        public XamlFormatter(XamlFormatterOptions options)
         {
-            this.indentSize = indentSize;
-            this.vsOptions = vsOptions;
+            this.options = options;
         }
 
         private void ResetFields()
@@ -62,7 +59,7 @@ namespace FormatXaml
                     if (symbol == Constants.OpenCommentTag)
                     {
                         isComment = true;
-                        if (vsOptions.CommentIndentation == CommentIndentation.Extra)
+                        if (options.CommentIndentation == CommentIndentation.Extra)
                         {
                             // Add extra indentation
                             lineDepth++;
@@ -72,7 +69,7 @@ namespace FormatXaml
                     if (symbol == Constants.CloseCommentTag)
                     {
                         isComment = false;
-                        if (vsOptions.CommentIndentation == CommentIndentation.Extra)
+                        if (options.CommentIndentation == CommentIndentation.Extra)
                         {
                             // Remove extra indentation
                             lineDepth--;
@@ -147,11 +144,11 @@ namespace FormatXaml
 
             if (xamlLine.Line.Length >= offset)
             {
-                attributeIndentation = depth * indentSize + offset;
+                attributeIndentation = depth * options.IndentSize + offset;
             }
             else
             {
-                attributeIndentation = (depth + 1) * indentSize;
+                attributeIndentation = (depth + 1) * options.IndentSize;
             }
         }
 
@@ -176,7 +173,7 @@ namespace FormatXaml
                 return Indent(xamlLine.Line, attributeIndentation);
             }
 
-            if (vsOptions.CommentIndentation == CommentIndentation.Extra && xamlLine.Line == Constants.CloseCommentTag)
+            if (options.CommentIndentation == CommentIndentation.Extra && xamlLine.Line == Constants.CloseCommentTag)
             {
                 // Line contains only closing comment tag
                 int closeCommentDepth = depth - 1;
@@ -189,7 +186,7 @@ namespace FormatXaml
 
         private string IndentWithDepth(string text, int depth)
         {
-            return Indent(text, depth * indentSize);
+            return Indent(text, depth * options.IndentSize);
         }
 
         private static string Indent(string text, int indentationSize)
@@ -200,7 +197,7 @@ namespace FormatXaml
 
         private string GetLineEnding(string xamlLineEnding)
         {
-            switch (vsOptions.LineEnding)
+            switch (options.LineEnding)
             {
                 case LineEnding.CRLF:
                     return Constants.WindowsLineEnding;
@@ -216,7 +213,7 @@ namespace FormatXaml
 
         private int GetWhitespaceCount()
         {
-            switch (vsOptions.WhitespaceBeforeEmptyTag)
+            switch (options.WhitespaceBeforeEmptyTag)
             {
                 case WhitespaceBeforeEmptyTag.Zero:
                     return 0;

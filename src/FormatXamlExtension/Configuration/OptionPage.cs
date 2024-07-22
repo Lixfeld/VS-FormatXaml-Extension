@@ -1,5 +1,4 @@
 ﻿using FormatXaml;
-using FormatXaml.Configuration;
 using Microsoft.VisualStudio.Shell;
 using System.ComponentModel;
 

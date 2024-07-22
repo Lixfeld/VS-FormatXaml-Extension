@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\FormatService.cs" />
+    <Compile Include="Configuration\VSOptions.cs" />
     <Compile Include="EventHandler\BeforeSaveEventHandler.cs" />
     <Compile Include="EventHandler\RunningDocTableEventsHandler.cs" />
     <Compile Include="Configuration\OptionPage.cs">

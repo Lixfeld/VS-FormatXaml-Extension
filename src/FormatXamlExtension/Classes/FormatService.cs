@@ -1,7 +1,7 @@
 ﻿using EditorConfig.Core;
 using EnvDTE;
 using FormatXaml;
-using FormatXaml.Configuration;
+using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
@@ -32,7 +32,9 @@ namespace FormatXamlExtension.Classes
             XamlText xamlText = new XamlText(text);
 
             int indentSize = GetIndentationSize();
-            XamlFormatter xamlFormatter = new XamlFormatter(indentSize, vsOptions);
+            XamlFormatterOptions xamlFormatterOptions = vsOptions.CreateXamlFormatterOptions(indentSize);
+
+            XamlFormatter xamlFormatter = new XamlFormatter(xamlFormatterOptions);
             string newText = xamlFormatter.Format(xamlText);
 
             try

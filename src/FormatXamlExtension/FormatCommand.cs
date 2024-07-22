@@ -1,7 +1,7 @@
 ﻿using EnvDTE;
 using EnvDTE80;
-using FormatXaml.Configuration;
 using FormatXamlExtension.Classes;
+using FormatXamlExtension.Configuration;
 using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Design;

@@ -1,10 +1,21 @@
 ﻿using FormatXaml;
-using FormatXaml.Configuration;
 
 namespace FormatXamlExtension.Test
 {
     public class XamlFormatterTests
     {
+        /// <summary>
+        /// Only for Tests
+        /// </summary>
+        internal static XamlFormatterOptions TestOptions(
+            int indentSize = Constants.DefaultIndentSize,
+            LineEnding lineEnding = LineEnding.Auto,
+            CommentIndentation commentIndentation = CommentIndentation.Same,
+            WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag = WhitespaceBeforeEmptyTag.Ignore)
+        {
+            return new XamlFormatterOptions(indentSize, lineEnding, commentIndentation, whitespaceBeforeEmptyTag);
+        }
+
         [Fact]
         public void NewLineAtEnd() => FileComparer.Verify();
 
@@ -23,8 +34,8 @@ namespace FormatXamlExtension.Test
         [Fact]
         public void LineEndingLF()
         {
-            VSOptions vsOptions = new VSOptions(lineEnding: LineEnding.LF);
-            FileComparer.Verify(vsOptions);
+            XamlFormatterOptions options = TestOptions(lineEnding: LineEnding.LF);
+            FileComparer.Verify(options);
         }
 
         [Fact]
@@ -40,34 +51,38 @@ namespace FormatXamlExtension.Test
         public void CloseAngleBracketOnNewLine() => FileComparer.Verify();
 
         [Fact]
-        public void IndenSizeTwo() => FileComparer.Verify(indentSize: 2);
+        public void IndenSizeTwo()
+        {
+            XamlFormatterOptions options = TestOptions(indentSize: 2);
+            FileComparer.Verify(options);
+        }
 
         [Fact]
         public void MultiLineCommentsSameIndent()
         {
-            VSOptions vsOptions = new VSOptions(commentIndentation: CommentIndentation.Same);
-            FileComparer.Verify(vsOptions);
+            XamlFormatterOptions options = TestOptions(commentIndentation: CommentIndentation.Same);
+            FileComparer.Verify(options);
         }
 
         [Fact]
         public void MultiLineCommentsExtraIndent()
         {
-            VSOptions vsOptions = new VSOptions(commentIndentation: CommentIndentation.Extra);
-            FileComparer.Verify(vsOptions);
+            XamlFormatterOptions options = TestOptions(commentIndentation: CommentIndentation.Extra);
+            FileComparer.Verify(options);
         }
 
         [Fact]
         public void NoSpaceBeforeEmptyTag()
         {
-            VSOptions vsOptions = new VSOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.Zero);
-            FileComparer.Verify(vsOptions);
+            XamlFormatterOptions options = TestOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.Zero);
+            FileComparer.Verify(options);
         }
 
         [Fact]
         public void OneSpaceBeforeEmptyTag()
         {
-            VSOptions vsOptions = new VSOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.One);
-            FileComparer.Verify(vsOptions);
+            XamlFormatterOptions options = TestOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.One);
+            FileComparer.Verify(options);
         }
 
         [Fact]

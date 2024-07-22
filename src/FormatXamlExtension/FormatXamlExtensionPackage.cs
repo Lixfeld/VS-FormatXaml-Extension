@@ -1,5 +1,4 @@
 ﻿using EnvDTE;
-using FormatXaml.Configuration;
 using FormatXamlExtension.Configuration;
 using FormatXamlExtension.EventHandler;
 using Microsoft.VisualStudio.Shell;
