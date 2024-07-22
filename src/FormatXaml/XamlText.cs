@@ -11,10 +11,10 @@ namespace FormatXaml
 
         public XamlText(string text)
         {
-            Text = text;
+            Text = text ?? throw new ArgumentNullException(nameof(text));
 
-            int lfIndex = text.IndexOf(Constants.UnixLineEnding);
-            int crlfIndex = text.IndexOf(Constants.WindowsLineEnding);
+            int lfIndex = text.IndexOf(Constants.UnixLineEnding, StringComparison.InvariantCulture);
+            int crlfIndex = text.IndexOf(Constants.WindowsLineEnding, StringComparison.InvariantCulture);
 
             // Determine line ending by the first match
             if (crlfIndex == -1 || crlfIndex > lfIndex)

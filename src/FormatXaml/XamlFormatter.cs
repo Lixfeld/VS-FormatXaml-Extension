@@ -32,6 +32,9 @@ namespace FormatXaml
 
         public string Format(XamlText xamlText)
         {
+            if (xamlText == null)
+                throw new ArgumentNullException(nameof(xamlText));
+
             ResetFields();
 
             List<string> formattedLines = new List<string>();
@@ -117,7 +120,7 @@ namespace FormatXaml
                 {
                     string line = formattedLines[i];
                     // Only change lines which ends with closing empty tag BUT also includes other characters
-                    if (line.EndsWith(Constants.CloseEmptyTag) && line.Trim() != Constants.CloseEmptyTag)
+                    if (line.EndsWith(Constants.CloseEmptyTag, StringComparison.InvariantCulture) && line.Trim() != Constants.CloseEmptyTag)
                     {
                         // Remove closing empty tag before trimming and adding X number of whitespaces
                         string trimmedLine = line.Remove(line.Length - 2, 2).TrimEnd();
@@ -134,7 +137,7 @@ namespace FormatXaml
 
         private void SetAttributeIndentation(XamlLine xamlLine, string lastSymbol)
         {
-            int index = xamlLine.Line.LastIndexOf(lastSymbol);
+            int index = xamlLine.Line.LastIndexOf(lastSymbol, StringComparison.InvariantCulture);
 
             // Get offset from symbol to first attribute
             int offset = xamlLine.Line
@@ -189,7 +192,7 @@ namespace FormatXaml
             return Indent(text, depth * indentSize);
         }
 
-        private string Indent(string text, int indentationSize)
+        private static string Indent(string text, int indentationSize)
         {
             string indendation = new string(' ', indentationSize);
             return indendation + text;

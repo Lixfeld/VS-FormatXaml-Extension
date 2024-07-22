@@ -17,6 +17,9 @@ namespace FormatXaml
 
         public XamlLine(string rawLine)
         {
+            if (rawLine == null)
+                throw new ArgumentNullException(nameof(rawLine));
+
             Line = rawLine.Trim();
             RawLine = rawLine;
 
@@ -45,7 +48,7 @@ namespace FormatXaml
                 // Use xamlSymbols order to avoid substrings
                 foreach (string xamlSymbol in xamlSymbols)
                 {
-                    int symbolIndex = escapedLine.IndexOf(xamlSymbol, startIndex);
+                    int symbolIndex = escapedLine.IndexOf(xamlSymbol, startIndex, StringComparison.InvariantCulture);
                     if (symbolIndex >= 0)
                     {
                         symbols.Add((symbolIndex, xamlSymbol));

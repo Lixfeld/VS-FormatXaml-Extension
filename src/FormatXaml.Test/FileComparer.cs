@@ -1,8 +1,6 @@
 ﻿using FormatXaml;
 using FormatXaml.Configuration;
-using System.IO;
 using System.Runtime.CompilerServices;
-using Xunit;
 using static FormatXaml.Constants;
 
 namespace FormatXamlExtension.Test
@@ -11,7 +9,7 @@ namespace FormatXamlExtension.Test
     {
         private const string TestFilesDirectory = "TestFiles\\";
 
-        public static void Verify(VSOptions vsOptions = null, int indentSize = DefaultIndentSize, [CallerMemberName] string fileName = "")
+        public static void Verify(VSOptions? vsOptions = null, int indentSize = DefaultIndentSize, [CallerMemberName] string fileName = "")
         {
             if (vsOptions == null)
             {
