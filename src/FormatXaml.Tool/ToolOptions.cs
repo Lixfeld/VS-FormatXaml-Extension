@@ -8,6 +8,12 @@ namespace FormatXaml.Tool
         [Value(0, MetaName = "file-or-directory", Required = true, HelpText = "Path of the file or directory.")]
         public string? FileOrDirectory { get; set; }
 
+        [Option("verbose", Default = false, MetaValue = "BOOL", HelpText = "Show verbose messaging.")]
+        public bool Verbose { get; set; }
+
+        [Option("encoding", Default = "utf-8", MetaValue = "STRING", HelpText = "Encoding name (see .NET Encoding.GetEncoding Method).")]
+        public string? EncodingName { get; set; }
+
         [Option("extensions", Default = new string[] { ".xaml", ".axaml" }, MetaValue = "LIST", HelpText = "Space separated list of file extensions.")]
         public IEnumerable<string>? Extensions { get; set; }
 
