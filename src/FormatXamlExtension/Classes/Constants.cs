@@ -27,7 +27,7 @@
         Custom
     }
 
-    public class Constants
+    public static class Constants
     {
         public const string UnixLineEnding = "\n";
         public const string WindowsLineEnding = "\r\n";

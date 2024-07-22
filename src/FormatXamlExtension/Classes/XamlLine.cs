@@ -62,7 +62,7 @@ namespace FormatXamlExtension.Classes
                 {
                     // Get next symbol with lowest index
                     int minIndex = symbols.Min(x => x.index);
-                    var minSymbol = symbols.Where(x => x.index == minIndex).First();
+                    var minSymbol = symbols.First(x => x.index == minIndex);
 
                     index = minSymbol.index;
                     symbol = minSymbol.symbol;

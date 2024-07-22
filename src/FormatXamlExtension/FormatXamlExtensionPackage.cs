@@ -38,8 +38,6 @@ namespace FormatXamlExtension
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class FormatXamlExtensionPackage : AsyncPackage
     {
-        private IVsRunningDocTableEvents3 beforeSaveEventHandler;
-
         /// <summary>
         /// FormatXamlExtensionPackage GUID string.
         /// </summary>
@@ -71,7 +69,7 @@ namespace FormatXamlExtension
             // Add OnBeforeSave EventHandler
             DTE dte = await GetServiceAsync(typeof(DTE)) as DTE;
             RunningDocumentTable runningDocumentTable = new RunningDocumentTable(this);
-            beforeSaveEventHandler = new BeforeSaveEventHandler(dte, this);
+            IVsRunningDocTableEvents3 beforeSaveEventHandler = new BeforeSaveEventHandler(dte, this);
             runningDocumentTable.Advise(beforeSaveEventHandler);
         }
     }
