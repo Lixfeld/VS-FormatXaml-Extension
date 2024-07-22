@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CommandLine;
 
 namespace FormatXaml.Tool
 {
@@ -6,7 +6,11 @@ namespace FormatXaml.Tool
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Parser.Default.ParseArguments<ToolOptions>(args).WithParsed(options =>
+            {
+                RootCommand rootCommand = new RootCommand(options);
+                rootCommand.Execute();
+            });
         }
     }
 }
