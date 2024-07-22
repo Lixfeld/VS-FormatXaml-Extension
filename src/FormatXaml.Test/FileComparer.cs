@@ -1,7 +1,5 @@
 ﻿using FormatXaml;
 using FormatXaml.Configuration;
-using FormatXamlExtension.Classes;
-using FormatXamlExtension.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Xunit;
