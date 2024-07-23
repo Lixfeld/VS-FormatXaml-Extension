@@ -1,13 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>format-xaml</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
+    <Authors>Lixfeld</Authors>
+    <Description>Format XAML document line by line without encoding to preserve the original string</Description>
+    <PackageProjectUrl>https://github.com/Lixfeld/VS-FormatXaml-Extension/tree/main/src/FormatXaml.Tool</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Lixfeld/VS-FormatXaml-Extension</RepositoryUrl>
+    <PackageTags>format xaml code formatting wpf</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
