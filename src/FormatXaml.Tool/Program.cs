@@ -1,4 +1,5 @@
 ﻿using CommandLine;
+using System;
 
 namespace FormatXaml.Tool
 {
@@ -6,7 +7,14 @@ namespace FormatXaml.Tool
     {
         private static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<ToolOptions>(args).WithParsed(options =>
+            Parser parser = new Parser(config =>
+            {
+                config.CaseSensitive = false;
+                config.CaseInsensitiveEnumValues = true;
+                config.HelpWriter = Console.Out;
+            });
+
+            parser.ParseArguments<ToolOptions>(args).WithParsed(options =>
             {
                 RootCommand rootCommand = new RootCommand(options);
                 rootCommand.Execute();
