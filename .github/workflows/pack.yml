@@ -1,0 +1,27 @@
+name: Create .NET tool
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_FILEPATH: "src/FormatXaml.Tool/FormatXaml.Tool.csproj"
+      RELEASE_DIRECTORY: "src/FormatXaml.Tool/nupkg"
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.PROJECT_FILEPATH }}
+      - name: Build and pack
+        run: dotnet pack ${{ env.PROJECT_FILEPATH }} --no-restore --configuration=Release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: ${{ env.RELEASE_DIRECTORY }}/*.nupkg
