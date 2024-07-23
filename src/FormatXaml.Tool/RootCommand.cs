@@ -77,6 +77,11 @@ namespace FormatXaml.Tool
                 }
 
                 int indentSize = options.IndentSize;
+                if (indentSize <= 0 && !EditorConfigHelper.TryGetIndentationSize(path, out indentSize))
+                {
+                    // Fallback
+                    indentSize = Constants.DefaultIndentSize;
+                }
 
                 string text = File.ReadAllText(path, encoding);
                 XamlText xamlText = new XamlText(text);

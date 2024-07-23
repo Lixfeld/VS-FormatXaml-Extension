@@ -17,7 +17,11 @@ namespace FormatXaml.Tool
         [Option("extensions", Default = new string[] { ".xaml", ".axaml" }, MetaValue = "LIST", HelpText = "Space separated list of file extensions.")]
         public IEnumerable<string>? Extensions { get; set; }
 
-        [Option("indent-size", Default = 4, MetaValue = "INT", HelpText = "Number of spaces for indentation.")]
+        /// <summary>
+        /// Don't use "Default" in Option-Attribute
+        /// If no value is specified (implicit 0) the EditorConfig is used.
+        /// </summary>
+        [Option("indent-size", MetaValue = "INT", HelpText = "(Default: EditorConfig) Number of spaces for indentation (Fallback: 4).")]
         public int IndentSize { get; set; }
 
         [Option("line-ending", Default = LineEnding.Auto, MetaValue = "ENUM", HelpText = "End of Line characters. Values: Auto, CRLF, LF")]
