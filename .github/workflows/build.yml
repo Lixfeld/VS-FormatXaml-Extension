@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: windows-latest
     env:
+        LIBRARY_FILEPATH: "src/FormatXaml/FormatXaml.csproj"
         PROJECT_FILEPATH: "src/FormatXamlExtension/FormatXamlExtension.csproj"
         RELEASE_DIRECTORY: "src/FormatXamlExtension/bin/Release"
     
@@ -20,7 +21,9 @@ jobs:
       uses: nuget/setup-nuget@v2
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
-    - name: Restore
+    - name: Restore library
+      run: nuget restore ${{ env.LIBRARY_FILEPATH }}
+    - name: Restore project
       run: nuget restore ${{ env.PROJECT_FILEPATH }}
     - name: Build
       run: msbuild ${{ env.PROJECT_FILEPATH }} /p:configuration=Release /p:DeployExtension=false
