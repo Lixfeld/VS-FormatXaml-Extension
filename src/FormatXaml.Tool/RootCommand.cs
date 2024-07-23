@@ -76,10 +76,12 @@ namespace FormatXaml.Tool
                     Console.WriteLine(path);
                 }
 
+                int indentSize = options.IndentSize;
+
                 string text = File.ReadAllText(path, encoding);
                 XamlText xamlText = new XamlText(text);
 
-                string formattedText = xamlFormatter.Format(xamlText);
+                string formattedText = xamlFormatter.Format(xamlText, indentSize);
                 File.WriteAllText(path, formattedText, encoding);
             }
 

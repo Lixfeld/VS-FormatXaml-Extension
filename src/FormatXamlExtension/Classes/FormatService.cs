@@ -29,11 +29,11 @@ namespace FormatXamlExtension.Classes
             string text = TextViewHelper.GetText(textView);
             XamlText xamlText = new XamlText(text);
 
-            int indentSize = GetIndentationSize();
-            XamlFormatterOptions xamlFormatterOptions = vsOptions.CreateXamlFormatterOptions(indentSize);
-
+            XamlFormatterOptions xamlFormatterOptions = vsOptions.CreateXamlFormatterOptions();
             XamlFormatter xamlFormatter = new XamlFormatter(xamlFormatterOptions);
-            string newText = xamlFormatter.Format(xamlText);
+
+            int indentSize = GetIndentationSize();
+            string newText = xamlFormatter.Format(xamlText, indentSize);
 
             try
             {

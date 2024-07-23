@@ -7,6 +7,7 @@ namespace FormatXaml
     public class XamlFormatter
     {
         private readonly XamlFormatterOptions options;
+        private int indentSize;
 
         private int depth;
         private int attributeIndentation;
@@ -27,12 +28,13 @@ namespace FormatXaml
             lastSymbolInText = null;
         }
 
-        public string Format(XamlText xamlText)
+        public string Format(XamlText xamlText, int indentSize)
         {
             if (xamlText == null)
                 throw new ArgumentNullException(nameof(xamlText));
 
             ResetFields();
+            this.indentSize = indentSize;
 
             List<string> formattedLines = new List<string>();
             foreach (XamlLine xamlLine in xamlText.GetXamlLines())
@@ -144,11 +146,11 @@ namespace FormatXaml
 
             if (xamlLine.Line.Length >= offset)
             {
-                attributeIndentation = depth * options.IndentSize + offset;
+                attributeIndentation = depth * indentSize + offset;
             }
             else
             {
-                attributeIndentation = (depth + 1) * options.IndentSize;
+                attributeIndentation = (depth + 1) * indentSize;
             }
         }
 
@@ -186,7 +188,7 @@ namespace FormatXaml
 
         private string IndentWithDepth(string text, int depth)
         {
-            return Indent(text, depth * options.IndentSize);
+            return Indent(text, depth * indentSize);
         }
 
         private static string Indent(string text, int indentationSize)

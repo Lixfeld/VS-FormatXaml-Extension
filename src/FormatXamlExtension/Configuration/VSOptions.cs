@@ -39,9 +39,9 @@ namespace FormatXamlExtension.Configuration
             CustomIndentSize = customIndentSize;
         }
 
-        public XamlFormatterOptions CreateXamlFormatterOptions(int indentSize)
+        public XamlFormatterOptions CreateXamlFormatterOptions()
         {
-            return new XamlFormatterOptions(indentSize, LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
+            return new XamlFormatterOptions(LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
         }
     }
 }

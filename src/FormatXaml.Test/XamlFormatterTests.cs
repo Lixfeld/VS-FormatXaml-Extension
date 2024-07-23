@@ -8,12 +8,11 @@ namespace FormatXamlExtension.Test
         /// Only for Tests
         /// </summary>
         internal static XamlFormatterOptions TestOptions(
-            int indentSize = Constants.DefaultIndentSize,
             LineEnding lineEnding = LineEnding.Auto,
             CommentIndentation commentIndentation = CommentIndentation.Same,
             WhitespaceBeforeEmptyTag whitespaceBeforeEmptyTag = WhitespaceBeforeEmptyTag.Ignore)
         {
-            return new XamlFormatterOptions(indentSize, lineEnding, commentIndentation, whitespaceBeforeEmptyTag);
+            return new XamlFormatterOptions(lineEnding, commentIndentation, whitespaceBeforeEmptyTag);
         }
 
         [Fact]
@@ -35,7 +34,7 @@ namespace FormatXamlExtension.Test
         public void LineEndingLF()
         {
             XamlFormatterOptions options = TestOptions(lineEnding: LineEnding.LF);
-            FileComparer.Verify(options);
+            FileComparer.Verify(options: options);
         }
 
         [Fact]
@@ -53,36 +52,35 @@ namespace FormatXamlExtension.Test
         [Fact]
         public void IndenSizeTwo()
         {
-            XamlFormatterOptions options = TestOptions(indentSize: 2);
-            FileComparer.Verify(options);
+            FileComparer.Verify(indentSize: 2);
         }
 
         [Fact]
         public void MultiLineCommentsSameIndent()
         {
             XamlFormatterOptions options = TestOptions(commentIndentation: CommentIndentation.Same);
-            FileComparer.Verify(options);
+            FileComparer.Verify(options: options);
         }
 
         [Fact]
         public void MultiLineCommentsExtraIndent()
         {
             XamlFormatterOptions options = TestOptions(commentIndentation: CommentIndentation.Extra);
-            FileComparer.Verify(options);
+            FileComparer.Verify(options: options);
         }
 
         [Fact]
         public void NoSpaceBeforeEmptyTag()
         {
             XamlFormatterOptions options = TestOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.Zero);
-            FileComparer.Verify(options);
+            FileComparer.Verify(options: options);
         }
 
         [Fact]
         public void OneSpaceBeforeEmptyTag()
         {
             XamlFormatterOptions options = TestOptions(whitespaceBeforeEmptyTag: WhitespaceBeforeEmptyTag.One);
-            FileComparer.Verify(options);
+            FileComparer.Verify(options: options);
         }
 
         [Fact]

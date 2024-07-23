@@ -31,7 +31,7 @@ namespace FormatXaml.Tool
 
         public XamlFormatterOptions CreateXamlFormatterOptions()
         {
-            return new XamlFormatterOptions(IndentSize, LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
+            return new XamlFormatterOptions(LineEnding, CommentIndentation, WhitespaceBeforeEmptyTag);
         }
     }
 }

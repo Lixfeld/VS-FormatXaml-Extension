@@ -7,7 +7,7 @@ namespace FormatXamlExtension.Test
     {
         private const string TestFilesDirectory = "TestFiles\\";
 
-        public static void Verify(XamlFormatterOptions? options = null, [CallerMemberName] string fileName = "")
+        public static void Verify(int indentSize = Constants.DefaultIndentSize, XamlFormatterOptions? options = null, [CallerMemberName] string fileName = "")
         {
             if (options == null)
             {
@@ -24,7 +24,7 @@ namespace FormatXamlExtension.Test
             // Formatting
             XamlText xamlText = new XamlText(testText);
             XamlFormatter xamlFormatter = new XamlFormatter(options);
-            string actualText = xamlFormatter.Format(xamlText);
+            string actualText = xamlFormatter.Format(xamlText, indentSize);
 
 #if DEBUG
             string actualFileName = TestFilesDirectory + fileName + ".actual";
