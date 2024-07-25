@@ -5,14 +5,18 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <PackageId>FormatXaml.Tool</PackageId>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>format-xaml</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <Authors>Lixfeld</Authors>
     <Description>Format XAML document line by line without encoding to preserve the original string</Description>
+    <Copyright>Copyright 2024 Lixfeld</Copyright>
     <PackageProjectUrl>https://github.com/Lixfeld/VS-FormatXaml-Extension/tree/main/src/FormatXaml.Tool</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Lixfeld/VS-FormatXaml-Extension</RepositoryUrl>
-    <PackageTags>format xaml code formatting wpf</PackageTags>
+    <PackageIcon>PackageIcon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>format xaml code-formatting wpf</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
@@ -22,6 +26,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FormatXaml\FormatXaml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="PackageIcon.png" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
