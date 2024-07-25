@@ -1,6 +1,6 @@
 ## Format XAML
 
-Download from [Visual Studio Marketplace][3] or [GitHub][4].
+Download from [Visual Studio Marketplace][3] or [GitHub][4]. The **.NET tool** is also available on [NuGet.org][5].
 
 This extension is inspired by [XamlFormatter][1] from DannOh which I used for **Visual Studio 2017 and 2019**.
 ___
@@ -29,3 +29,4 @@ Please see the [third party notices](THIRD-PARTY-NOTICES.txt) for included open-
 
 [3]: https://marketplace.visualstudio.com/items?itemName=Lixfeld.FormatXAML
 [4]: https://github.com/Lixfeld/VS-FormatXaml-Extension/releases
+[5]: https://www.nuget.org/packages/FormatXaml.Tool
