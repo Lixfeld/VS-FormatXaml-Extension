@@ -37,16 +37,11 @@ namespace FormatXamlExtension.Classes
 
             try
             {
-                dte.UndoContext.Open("Format xaml");
                 TextViewHelper.ReplaceText(textView, newText);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.Write(ex);
-            }
-            finally
-            {
-                dte.UndoContext.Close();
             }
         }
 
